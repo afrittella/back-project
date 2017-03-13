@@ -31,10 +31,9 @@ class BackProjectServiceProvider extends ServiceProvider
     // - first the published views (in case they have any changes)
     $this->loadViewsFrom(resource_path('views/vendor/back-project/base'), 'back-project');
     // - then the stock views that come with the package, in case a published view might be missing
-    $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'back-project');
-
+    $this->loadViewsFrom(__DIR__ . '/../resources/views', 'back-project');
     // Load Translations
-    $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/lang'), 'back-project');
+    $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'back-project');
 
     // use the vendor configuration file as fallback
     $this->mergeConfigFrom(
