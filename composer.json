@@ -1,0 +1,33 @@
+{
+    "name": "afrittella/back-project",
+    "description": "Just another admin panel for Laravel. Inspired by Backpack.",
+    "require": {
+        "illuminate/support": "^5.4",
+        "laravel/framework": "^5.4",
+        "almasaeed2010/adminlte": "^2.3",
+        "prologue/alerts": "0.4.*",
+        "doctrine/dbal": "^2.5",
+        "spatie/laravel-permission": "^1.7",
+        "kalnoy/nestedset": "^4.2",
+        "pendonl/laravel-fontawesome": "^1.0",
+        "laravelcollective/html": "^5.4",
+        "laravolt/avatar": "^1.8",
+        "caouecs/laravel-lang": "~3.0",
+        "intervention/image": "^2.3",
+        "intervention/imagecache": "^2.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrea Frittella",
+            "email": "a.frittella@sintab.it",
+            "role": "Chief Architect & Developer",
+            "homepage": "http://www.andreafrittella.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Afrittella\\BackProject\\": "src/app"
+        }
+    }
+}

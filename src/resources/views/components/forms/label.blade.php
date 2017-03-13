@@ -1,0 +1,1 @@
+{!! Form::label($name, $title . ((!empty($required)) ? ' (*) ' : ''), ['class' => 'col-md-'.(isset($class) ? $class : "4").' control-label']) !!}

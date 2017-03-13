@@ -1,0 +1,30 @@
+{
+  "name": "back-project",
+  "description": "Just another admin panel for Laravel 5",
+  "main": "",
+  "keywords": [
+    "laravel",
+    "admin",
+    "backend"
+  ],
+  "authors": [
+    "Andrea Frittella"
+  ],
+  "license": "MIT",
+  "homepage": "www.andreafrittella.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-form": "jquery-form/form#^4.0.1",
+    "dropzone": "enyo/dropzone#^4.3.0",
+    "fancybox": "fancyapps/fancybox#^3.0.39",
+    "animate.css": "^3.5.2"
+  }
+}

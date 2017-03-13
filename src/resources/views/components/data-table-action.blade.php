@@ -1,0 +1,1 @@
+<a class="btn btn-xs btn-default btn-flat" href="{{ $action['url'] }}" data-action="{{ $key }}">{!! icon($key) !!} {{ trans('back-project::crud.'.$key) }}</a>&nbsp;
