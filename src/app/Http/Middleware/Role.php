@@ -27,7 +27,6 @@ class Role
         }
 
         if (!empty($permission) and ! $request->user()->can($permission)) {
-
             abort(403);
         }
 

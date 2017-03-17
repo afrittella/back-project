@@ -64,6 +64,10 @@ class BackProjectServiceProvider extends ServiceProvider
        return new MediaManager();
     });
 
+      $this->app->singleton('back-project', function($app) {
+          return new BackProject();
+      });
+
     // @TODO understand the use of contracts
     //$this->app->singleton(\Afrittella\BackProject\Contracts\FormBuilder::class, \Afrittella\BackProject\FormBuilder::class);
     //$this->app->singleton('form-builder', \Afrittella\BackProject\FormBuilder::class);
@@ -115,45 +119,10 @@ class BackProjectServiceProvider extends ServiceProvider
     // Register Middleware
 
     $router->aliasMiddleware('admin', \Afrittella\BackProject\Http\Middleware\Admin::class);
-    $router->aliasMiddleware('guest', \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class);
+    //$router->aliasMiddleware('guest', \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class);
     $router->aliasMiddleware('role', \Afrittella\BackProject\Http\Middleware\Role::class);
 
-    $router->group(['namespace' => 'Afrittella\BackProject\Http\Controllers'], function($router) {
-        Route::group(['middleware' => 'web'], function() {
-            Route::get('confirm/{code}/{user}', 'Auth\RegisterController@confirm')->name('users.confirm');
-            Route::auth();
-        });
-
-        Route::group(['middleware' => 'web', 'prefix' => config('back-project.route_prefix')], function() {
-            Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
-
-            Route::get('attachments/{attachment}/delete', 'AttachmentsController@delete')->name('attachments.delete'); // Implementing delete avoiding DELETE method
-            Route::get('attachments/{attachment}/main', 'AttachmentsController@setMain')->name('attachments.main');
-            Route::resource('attachments', 'AttachmentsController', ['except' => ['destroy', 'show']]);
-            // Users
-            Route::group(['middleware' => 'role:administrator'], function() {
-                Route::get('users/{user}/delete', 'UsersController@delete')->name('users.delete'); // Implementing delete avoiding DELETE method
-                Route::resource('users', 'UsersController', ['except' => ['destroy', 'show']]);
-
-                Route::get('roles/{role}/delete', 'RolesController@delete')->name('roles.delete'); // Implementing delete avoiding DELETE method
-                Route::resource('roles', 'RolesController', ['except' => ['destroy', 'show']]);
-
-                Route::get('permissions/{role}/delete', 'PermissionsController@delete')->name('permissions.delete'); // Implementing delete avoiding DELETE method
-                Route::resource('permissions', 'PermissionsController', ['except' => ['destroy', 'show']]);
-
-                Route::get('menus/{menu}/up', 'MenusController@up')->name('menus.up');
-                Route::get('menus/{menu}/down', 'MenusController@down')->name('menus.down');
-                Route::get('menus/{menu}/delete', 'MenusController@delete')->name('menus.delete'); // Implementing delete avoiding DELETE method
-                Route::resource('menus', 'MenusController', ['except' => ['destroy', 'show']]);
-
-                Route::get('media/{attachment}/delete', 'MediaController@delete')->name('media.delete'); // Implementing delete avoiding DELETE method
-                Route::resource('media', 'MediaController', ['except' => ['destroy', 'store', 'create', 'show']]);
-            });
-            // Main admin page
-            Route::get('/', 'AdminController@redirect');
-        });
-
-    });
+    $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
   }
 
   public function handleMigrations()

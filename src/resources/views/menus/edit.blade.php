@@ -12,7 +12,7 @@
             [
                 'url' => route('menus.index'),
                 'title' => trans('back-project::menu.Menus'),
-                'icon' => 'users'
+                'icon' => 'ellipsis-v'
             ],
             [
                 'active' => true,

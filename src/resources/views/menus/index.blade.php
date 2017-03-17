@@ -12,7 +12,7 @@
             [
                 'active' => true,
                 'title' => trans('back-project::menu.Menus'),
-                'icon' => 'users'
+                'icon' => 'ellipsis-v'
             ]
         ]
       ])

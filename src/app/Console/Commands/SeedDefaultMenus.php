@@ -108,7 +108,7 @@ class SeedDefaultMenus extends Command
             'permission' => 'administration',
             'title' => 'All Media',
             'description' => 'Manage all user\'s attachments',
-            'route' => config('back-project.route_prefix').'/attachments',
+            'route' => config('back-project.route_prefix').'/media',
             'icon' => 'fa fa-file-image-o',
             'is_active' => 1,
             'is_protected' => 1,
