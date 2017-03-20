@@ -200,7 +200,7 @@ class Handler extends ExceptionHandler
 ### Usage
 Once completed the [Installation](#installation) and [Configuration](#configuration) sections, go to your project's url (www.example.com/register), register and activate the first user who will be the site administrator.
 
-###Media Manager
+### Media Manager
 
 Back Project use intervention/image and intervention/imagecache to manage image upload, resizing and display. Once uploaded, an image can be displayed using imagecache package and default or custom filters. Feel free to create custom filters for your images.
 
