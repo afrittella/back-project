@@ -1,5 +1,5 @@
 # Back Project
-Back Project is an admin panel for Laravel 5.4 based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
+Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
 
 ### Features
 - AdminLTE template
@@ -11,8 +11,8 @@ Back Project is an admin panel for Laravel 5.4 based on [AdminLTE](https://githu
 ### Installation
 This package is still in beta version, so if you want to try it, you had to insert some code in your composer.json
 
-```json
-"repositories": [         
+```
+"repositories" : [         
          {
           "type": "vcs",
           "url": "https://github.com/afrittella/back-project"
@@ -298,8 +298,15 @@ class Model
 ```
 You can change the folder where files are uploaded in config/filesystems.php 
 
+### ToDo
+- Full documentation
+- Tests
+- Localization
 
 ### Credits
+
+I was inspired by [Backpack for Laravel](https://github.com/Laravel-Backpack) project, but i tried to make a simple one with only the features I need for my projects. Feel free to open a PR or send a feedback if you would like to collaborate and improve it.
+
 Back Project depends on the following packages:
 
 - [almasaeed2010/adminlte](https://github.com/almasaeed2010/AdminLTE)
@@ -312,8 +319,6 @@ Back Project depends on the following packages:
 - [caouecs/laravel-lang](https://github.com/caouecs/Laravel-lang)
 - [intervention/image](https://github.com/Intervention/image)
 - [intervention/imagecache](https://github.com/Intervention/imagecache)
-
-I was inspired by [Backpack for Laravel](https://github.com/Laravel-Backpack) project, but i tried to make a simple package with only the features I need for my projects. Feel free to contact me if you'd like to collaborate and improve it.
  
  ### License
  
