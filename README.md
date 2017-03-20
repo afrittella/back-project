@@ -6,7 +6,7 @@ Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://gith
 - Easy to use Html components and helpers for panels, buttons, links, icons
 - Simple authorization management built on top of [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - Menu management
-- Media Manager: you can upload media as backend user or manage all media uploaded by other users as administrator (see [MediaManager](#media-manager))
+- Media Manager: you can upload media as backend user or manage all media uploaded by other users as administrator (see [Media Manager](#media-manager))
 
 ### Installation
 This package is still in beta version, so if you want to try it, you had to insert some code in your composer.json
@@ -200,7 +200,7 @@ class Handler extends ExceptionHandler
 ### Usage
 Once completed the [Installation](#installation) and [Configuration](#configuration) sections, go to your project's url (www.example.com/register), register and activate the first user who will be the site administrator.
 
-**Media Manager**
+###Media Manager
 
 Back Project use intervention/image and intervention/imagecache to manage image upload, resizing and display. Once uploaded, an image can be displayed using imagecache package and default or custom filters. Feel free to create custom filters for your images.
 
