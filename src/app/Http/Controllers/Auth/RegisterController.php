@@ -17,10 +17,9 @@ class RegisterController extends Controller
 
   use RegistersUsers;
 
-  /**
+    /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {

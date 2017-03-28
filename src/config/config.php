@@ -2,6 +2,12 @@
 return [
   'route_prefix' => 'admin',
   'registration_open' => true,
+  'redirect_after_social_login' => 'admin.dashboard', // where to redirect after successfull login
+  'social_login_enabled' => [
+      'facebook' => false, // enable facebook login
+      'twitter' => false, // enable twitter login
+      'linkedin' => false // enable linkedin login
+  ],
   'use_queue' => false,
   'user_model' => \App\User::class,
   // Menu logos

@@ -8,8 +8,11 @@ return [
     'forgot_your_password' => 'Password dimenticata',
     'dashboard' => 'Bacheca',
     'profile' => 'Profilo',
+    'account' => 'Account',
+    'account_create' => 'Creazione account utente',
     'file_upload' => 'Trascina i file da caricare o clicca qui',
     'close' => 'Chiudi',
+
 
     // Buttons
     'enter' => 'Invia',
@@ -40,4 +43,8 @@ return [
     'user_confirmed' => 'Il tuo account è ora attivo. Puoi effettuare il login',
     'user_not_confirmed' => 'Problemi nell\'attivazione dell\'account.',
     'image_uploaded' => 'Caricamento avvenuto con successo',
+
+    'facebook_login' => 'Entra con Facebook',
+    'twitter_login' => 'Entra con Twitter',
+    'linkedin_login' => 'Entra con Linkedin',
 ];

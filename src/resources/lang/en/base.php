@@ -8,6 +8,8 @@ return [
     'forgot_your_password' => 'Forgot password',
     'dashboard' => 'Dashboard',
     'profile' => 'Profile',
+    'account' => 'Account',
+    'account_create' => 'Account creation',
     'file_upload' => 'Click here or drag and drop your images here',
     'close' => 'Close',
 
@@ -40,4 +42,8 @@ return [
     'user_confirmed' => 'Your account is now active. You can login',
     'user_not_confirmed' => 'Account not activated. There were problems, please retry or contact us',
     'image_uploaded' => 'File uploaded',
+
+    'facebook_login' => 'Sign in with Facebook',
+    'twitter_login' => 'Sign in with Twitter',
+    'linkedin_login' => 'Sign in withLinkedin',
 ];

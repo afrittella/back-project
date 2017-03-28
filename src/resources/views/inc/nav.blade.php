@@ -1,16 +1,51 @@
 <div class="navbar-custom-menu">
-  <ul class="nav navbar-nav">
-    <li class="user user-menu">
-        <a href="{{ url(config('back-project.route_prefix').'/dashboard') }}">
-            <img src=" {{ Avatar::create(strtoupper($user->username))->toBase64() }}" alt="{{  $user->username}}" class="user-image">
-            <span class="hidden-xs">{{ trans('back-project::base.dashboard') }}</span>
-        </a>
-    </li>
-    <li><a href="{{ url('logout') }}"
-        onclick="event.preventDefault();
-                 document.getElementById('logout-form').submit();"><i class="fa fa-btn fa-sign-out"></i> Logout</a>
-    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-        {{ csrf_field() }}
-    </form></li>
-  </ul>
+    <ul class="nav navbar-nav">
+        <li class="dropdown notifications-menu user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <!--<img src=" {{ Avatar::create(strtoupper($app_user->username))->toBase64() }}" alt="{{  $app_user->username}}"
+                     class="user-image">-->
+                &nbsp;{!! @icon('user') !!}
+                {{ $app_user->username }}
+            </a>
+            <ul class="dropdown-menu">
+                <li class="header">
+                    <img src=" {{ Avatar::create(strtoupper($app_user->username))->toBase64() }}"
+                         alt="{{  $app_user->username}}"
+                         class="user-image">
+                    {{ $app_user->username }}
+                    <small>{{ $app_user->email }}</small>
+                </li>
+                <li>
+                    <ul class="menu">
+                        <li>
+                            <a href="{{ route('admin.dashboard') }}">
+                                {!! @icon('dashboard') !!}
+                                {{ trans('back-project::base.dashboard') }}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin.account') }}">
+                                {!! @icon('user') !!}
+                                {{ trans('back-project::base.account') }}
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
+                                {!! @icon('sign-out') !!}
+                                {{ trans('back-project::base.logout') }}
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>
+

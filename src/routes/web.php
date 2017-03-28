@@ -3,10 +3,16 @@ Route::group(['namespace' => '\Afrittella\BackProject\Http\Controllers'], functi
     Route::group(['middleware' => 'web'], function () {
         Route::get('confirm/{code}/{user}', 'Auth\RegisterController@confirm')->name('users.confirm');
         Route::auth();
+
+        Route::get('auth/{provider}', 'Auth\SocialLoginController@redirectToProvider')->name('social_login');
+        Route::get('auth/{provider}/callback', 'Auth\SocialLoginController@handleProviderCallback')->name('social_callback');
     });
 
     Route::group(['middleware' => 'web', 'prefix' => config('back-project.route_prefix')], function () {
         Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+        Route::get('account', 'UsersController@account')->name('admin.account');
+        Route::put('account', 'UsersController@accountStore')->name('admin.add-account');
+        Route::post('account', 'UsersController@accountStore')->name('admin.edit-account');
 
         Route::get('attachments/{attachment}/delete', 'AttachmentsController@delete')->name('attachments.delete'); // Implementing delete avoiding DELETE method
         Route::get('attachments/{attachment}/main', 'AttachmentsController@setMain')->name('attachments.main');

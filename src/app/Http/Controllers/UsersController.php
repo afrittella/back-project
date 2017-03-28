@@ -2,6 +2,8 @@
 
 namespace Afrittella\BackProject\Http\Controllers;
 
+use Afrittella\BackProject\Http\Requests\AccountStore;
+use Afrittella\BackProject\Http\Requests\AccountEdit;
 use Afrittella\BackProject\Repositories\Users;
 use Afrittella\BackProject\Repositories\Roles;
 use Afrittella\BackProject\Http\Requests\UserAdd;
@@ -9,6 +11,7 @@ use Afrittella\BackProject\Http\Requests\UserEdit;
 use Afrittella\BackProject\Events\UserRegistered as Registered;
 use Illuminate\Http\Request;
 use Prologue\Alerts\Facades\Alert;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -16,6 +19,7 @@ class UsersController extends Controller
     {
         $this->middleware('admin');
     }
+
     /**
      * Show all users
      */
@@ -27,6 +31,13 @@ class UsersController extends Controller
     public function edit(Users $users, Roles $roles, $id)
     {
         return view('back-project::users.edit')->with('user', $users->find($id))->with('roles', $roles->all());
+    }
+
+    public function account()
+    {
+        $user = Auth::user();
+
+        return view('back-project::users.account')->with('user', Auth::user());
     }
 
     public function update(UserEdit $request, Users $users, $id)
@@ -56,6 +67,29 @@ class UsersController extends Controller
         Alert::add('success', trans('back-project::crud.model_created', ['model' => trans('back-project::users.user')]))->flash();
 
         return redirect(route('users.index'));
+    }
+
+    public function accountStore(AccountStore $request, Users $users)
+    {
+        $id = Auth::user()->id;
+
+
+
+        $data = array_merge($request->all(), [
+            'is_social' => 0,
+            'confirmed' => 1
+        ]);
+
+        $users->update($data, $id);
+
+        if ($request->method() == 'POST') {
+            Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project::users.user')]))->flash();
+        } else {
+            Alert::add('success', trans('back-project::crud.model_created', ['model' => trans('back-project::users.user')]))->flash();
+        }
+
+
+        return redirect(route('admin.dashboard'));
     }
 
     public function delete(Users $users, $id)

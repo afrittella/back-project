@@ -7,6 +7,7 @@ Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://gith
 - Simple authorization management built on top of [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - Menu management
 - Media Manager: you can upload media as backend user or manage all media uploaded by other users as administrator (see [Media Manager](#media-manager))
+- Social Login
 
 ### Installation
 This package is still in beta version, so if you want to try it, you had to insert some code in your composer.json
@@ -52,6 +53,60 @@ In config/laravel-permission.php change model classes to:
 'permission' => Afrittella\BackProject\Models\Permission::class,
 'role' => Afrittella\BackProject\Models\Role::class,
 ```
+
+Social login is disabled by default. To use it you must follow these steps:
+
+- Change the following lines in config/back-project.php
+  
+  ```php
+  'social_login_enabled' => [
+    'facebook' => true, // enable facebook login
+    'twitter' => true, // enable twitter login
+    'linkedin' => true // enable linkedin login
+  ],
+  ```
+- Create [Facebook](https://developers.facebook.com/apps/), [Twitter](https://apps.twitter.com/) and [Linkedin](https://www.linkedin.com/developer/apps) applications.
+- Once obtained app keys, add them to .env and to config/services.php as shown below. 
+
+    *.env*
+
+    ```apacheconfig
+    ...
+    FACEBOOK_ID = XXXXXXXX
+    FACEBOOK_SECRET = XXXXX
+    FACEBOOK_REDIRECT = http://example.com/auth/facebook/callback
+    
+    TWITTER_ID = XXXXXXXX
+    TWITTER_SECRET = XXXXX
+    TWITTER_REDIRECT = http://example.com/auth/twitter/callback
+    
+    LINKEDIN_ID = XXXXXXXX
+    LINKEDIN_SECRET = XXXXX
+    LINKEDIN_REDIRECT = http://example.com/auth/linkedin/callback
+    ```
+    
+    *config/service.php*
+    
+    ```php
+    ...
+    'facebook' => [
+        'client_id' => env('FACEBOOK_ID'),
+        'client_secret' => env('FACEBOOK_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
+    ],
+    
+    'twitter' => [
+        'client_id' => env('TWITTER_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => env('TWITTER_REDIRECT'),
+    ],
+    
+    'linkedin' => [
+        'client_id' => env('LINKEDIN_ID'),
+        'client_secret' => env('LINKEDIN_SECRET'),
+        'redirect' => env('LINKEDIN_REDIRECT'),
+    ]
+    ```
 
 **Language**
 
@@ -135,7 +190,7 @@ class User extends Authenticatable
     use ..., HasRoles, UserConfirmation;
     
     protected $fillable = [
-        'username', 'email', 'password', 'confirmation_code'
+        'username', 'email', 'password', 'confirmation_code', 'is_social', 'confirmed'
     ];
     
     ...
@@ -149,6 +204,12 @@ class User extends Authenticatable
      public function sendPasswordResetNotification($token)
      {
        $this->notify(new Afrittella\BackProject\Notifications\ResetPassword($token));
+     }
+     
+     // add 'social_accounts' relation [optional]
+     public function social_accounts()
+     {
+         return $this->hasMany('Afrittella\BackProject\Models\SocialAccount');
      }
 }
 ```
@@ -299,9 +360,10 @@ class Model
 You can change the folder where files are uploaded in config/filesystems.php 
 
 ### ToDo
-- Full documentation
-- Tests
-- Localization
+- Full documentation.
+- Tests.
+- Localization.
+- Better assets (js/css) management.
 
 ### Credits
 
@@ -319,6 +381,7 @@ Back Project depends on the following packages:
 - [caouecs/laravel-lang](https://github.com/caouecs/Laravel-lang)
 - [intervention/image](https://github.com/Intervention/image)
 - [intervention/imagecache](https://github.com/Intervention/imagecache)
+- [laravel/socialite](https://github.com/laravel/socialite)
  
  ### License
  
