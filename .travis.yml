@@ -18,12 +18,9 @@ services:
   - mysql
 
 before_script:
-  - cp .env.travis .env
   - mysql -u root -e 'create database family_test;'
   - composer self-update
   - composer install --no-interaction
-  - php artisan key:generate
-  - php artisan migrate
 
 script: ./vendor/bin/phpunit
 
