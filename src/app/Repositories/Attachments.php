@@ -19,7 +19,7 @@ class Attachments extends Base
         }
 
         if (!empty($data['is_main'])) {
-            $this->model->where('user_id', '=', $model_data->user_id)->where('id', '<>', $id)->update(['is_main' => 0]);
+            $this->removeIsMain($model_data->user_id, $id);
         }
 
         if (!$model_data->update($data)) {
@@ -27,5 +27,10 @@ class Attachments extends Base
         }
 
         return true;
+    }
+
+    public function removeIsMain($user_id, $id)
+    {
+        return $this->model->where('user_id', '=', $user_id)->where('id', '<>', $id)->update(['is_main' => 0]);
     }
 }

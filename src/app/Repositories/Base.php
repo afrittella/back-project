@@ -21,9 +21,9 @@ abstract class Base implements BaseRepository, CriteriaInterface
 
     protected $skipCriteria = false;
 
-    public function __construct(App $app, Collection $collection)
+    public function __construct(Collection $collection)
     {
-        $this->app = $app;
+        //$this->app = $app;
         $this->criteria = $collection;
         $this->resetScope();
         $this->makeModel();
@@ -104,7 +104,8 @@ abstract class Base implements BaseRepository, CriteriaInterface
 
     public function makeModel()
     {
-        $model = $this->app->make($this->model());
+        //$model = $this->app->make($this->model());
+        $model = app()->make($this->model());
 
         if (!$model instanceof Model)
             throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");

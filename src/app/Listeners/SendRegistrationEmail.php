@@ -26,8 +26,9 @@ class SendRegistrationEmail implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  vent=UserRegistered  $event
+     * @param UserRegistered $event
      * @return void
+     * @internal param $Event =UserRegistered  $event
      */
     public function handle(UserRegistered $event)
     {

@@ -46,5 +46,6 @@ class CreateAttachmentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists($this->table_attachments);
+        Schema::dropIfExists('attachables');
     }
 }

@@ -16,7 +16,7 @@ class MediaManager {
         //if (config('filesystems.default') == 'google') {
           //  $this->media_path = Storage::disk()->getDriver()->getAdapter()->getStorageApiUri() . '/' . Storage::disk()->getDriver()->getAdapter()->getBucket()->name();
         //} else {
-        $this->media_path = Storage::disk()->getDriver()->getAdapter()->getPathPrefix();
+        //$this->media_path = Storage::disk()->getDriver()->getAdapter()->getPathPrefix();
         //}
     }
 
@@ -25,10 +25,10 @@ class MediaManager {
         return "hello world";
     }
 
-    public function getMediaPath()
+    /*public function getMediaPath()
     {
         return $this->media_path;
-    }
+    }*/
 
     public function addAttachment($model)
     {
@@ -42,10 +42,19 @@ class MediaManager {
 
     public function getCachedImageUrl($format, $name)
     {
+        $format = $this->chooseFormat($format);
+
         return '/'.config('imagecache.route').'/'.$format.'/'.$name;
     }
 
     public function getCachedImageTag($format, $image, $attributes = "")
+    {
+        $format = $this->chooseFormat($format);
+
+        return '<img src="'.$this->getCachedImageUrl($format, $image->name).'" alt="'.$image->description.'" '.$attributes. '>';
+    }
+
+    protected function chooseFormat($format)
     {
         $templates = array_keys(config('imagecache.templates'));
         $format = strtolower($format);
@@ -54,6 +63,6 @@ class MediaManager {
             $format = 'original';
         }
 
-        return '<img src="'.$this->getCachedImageUrl($format, $image->name).'" alt="'.$image->description.'" '.$attributes. '>';
+        return $format;
     }
 }

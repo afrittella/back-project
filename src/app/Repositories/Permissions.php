@@ -12,13 +12,13 @@ class Permissions extends Base
 
     public function create(array $data)
     {
-        $role = $this->model->create($data);
+        $permission = $this->model->create($data);
 
         if (!empty($data['roles'])) {
-            $role->roles()->sync($data['roles']);
+            $permission->roles()->sync($data['roles']);
         }
 
-        return $role;
+        return $permission;
     }
 
     public function update(array $data, $id, $attribute = 'id')
