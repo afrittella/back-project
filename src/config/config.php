@@ -9,12 +9,12 @@ return [
       'linkedin' => false // enable linkedin login
   ],
   'use_queue' => false,
-  'user_model' => \App\User::class,
+  'user_model' => Afrittella\BackProject\Models\Auth\User::class,
   // Menu logos
   'logo_large'   => '<b>Back</b>project',
   'logo_small' => '<b>B</b>p',
   'menus' => [
-    'table' => 'menus'    
+    'table' => 'menus'
   ],
   'attachments' => [
       'table' => 'attachments',

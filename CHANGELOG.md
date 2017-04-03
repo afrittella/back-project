@@ -1,5 +1,12 @@
 # Change Log
 
+## V1.0.0-beta4
+Added some tests.
+
+User model now is provided by the package. You can extend it simply extending
+```php
+Afrittella\BackProject\Models\Auth\User;
+```
 ## v1.0.0-beta3
 
 **New features**
@@ -89,7 +96,7 @@ then
 **User Model**
 
 Change your User model as shown.
- 
+
 ```php
 ...
 protected $fillable = [
@@ -112,7 +119,7 @@ That's it!
 *Changes on default Middleware*
 
 - BackProject is provided with a custom middleware that replaces “RedirectIfAuthenticated”. If you want to use this middleware (it redirects to admin/dashboard if authenticated), you should replace the a”guest” alias in your app/Http/Middleware/Kernel.php as follows:`'guest' => \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class,`
- 
+
 
 **Enhancements**
 

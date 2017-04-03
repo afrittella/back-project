@@ -57,7 +57,7 @@ In config/laravel-permission.php change model classes to:
 Social login is disabled by default. To use it you must follow these steps:
 
 - Change the following lines in config/back-project.php
-  
+
   ```php
   'social_login_enabled' => [
     'facebook' => true, // enable facebook login
@@ -66,7 +66,7 @@ Social login is disabled by default. To use it you must follow these steps:
   ],
   ```
 - Create [Facebook](https://developers.facebook.com/apps/), [Twitter](https://apps.twitter.com/) and [Linkedin](https://www.linkedin.com/developer/apps) applications.
-- Once obtained app keys, add them to .env and to config/services.php as shown below. 
+- Once obtained app keys, add them to .env and to config/services.php as shown below.
 
     *.env*
 
@@ -75,18 +75,18 @@ Social login is disabled by default. To use it you must follow these steps:
     FACEBOOK_ID = XXXXXXXX
     FACEBOOK_SECRET = XXXXX
     FACEBOOK_REDIRECT = http://example.com/auth/facebook/callback
-    
+
     TWITTER_ID = XXXXXXXX
     TWITTER_SECRET = XXXXX
     TWITTER_REDIRECT = http://example.com/auth/twitter/callback
-    
+
     LINKEDIN_ID = XXXXXXXX
     LINKEDIN_SECRET = XXXXX
     LINKEDIN_REDIRECT = http://example.com/auth/linkedin/callback
     ```
-    
+
     *config/service.php*
-    
+
     ```php
     ...
     'facebook' => [
@@ -94,13 +94,13 @@ Social login is disabled by default. To use it you must follow these steps:
         'client_secret' => env('FACEBOOK_SECRET'),
         'redirect' => env('FACEBOOK_REDIRECT'),
     ],
-    
+
     'twitter' => [
         'client_id' => env('TWITTER_ID'),
         'client_secret' => env('TWITTER_SECRET'),
         'redirect' => env('TWITTER_REDIRECT'),
     ],
-    
+
     'linkedin' => [
         'client_id' => env('LINKEDIN_ID'),
         'client_secret' => env('LINKEDIN_SECRET'),
@@ -178,43 +178,27 @@ BackProject is provided with a custom middleware that replaces “RedirectIfAuth
 'guest' => \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class,
 ```
 
-Add the following traits to you *User* model and write/change some code.
-```php
-...
-use Afrittella\BackProject\Traits\UserConfirmation // manage 2 steps user registration
-use Spatie\Permission\Traits\HasRoles // enable permission management
-...
+*User model*
 
-class User extends Authenticatable
-{
-    use ..., HasRoles, UserConfirmation;
-    
-    protected $fillable = [
-        'username', 'email', 'password', 'confirmation_code', 'is_social', 'confirmed'
-    ];
-    
-    ...
-    
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-     public function sendPasswordResetNotification($token)
-     {
-       $this->notify(new Afrittella\BackProject\Notifications\ResetPassword($token));
-     }
-     
-     // add 'social_accounts' relation [optional]
-     public function social_accounts()
-     {
-         return $this->hasMany('Afrittella\BackProject\Models\SocialAccount');
-     }
-}
+A default *User* model is provided with the package. It has all the features to make Back Project works well. If you would like to use your custom model, simply extends:
+```php
+Afrittella\BackProject\Models\Auth\User;
 ```
 
-If your *User* model is not present in the default folder, you must change the ```"user_model"``` key in config/back-project.php, and, of course in auth/config.php :)
+If you are using package model, or if your *User* model is not present in the default folder, you must change auth/config.php:
+```php
+...
+'providers' => [
+  'users' => [
+      'driver' => 'eloquent',
+      'model' => Afrittella\BackProject\Models\Auth\User::class,
+  ],
+  ...
+```
+
+Remember to change *user_model* key in config/back-project.php if you want to use your custom *User* model.
+
+*Back Project simple auth method*
 
 Back Project has a simple authorization method, located in Afrittella/BackProject/Http/Controllers/Controller.php
 
@@ -240,25 +224,25 @@ use Afrittella\BackProject\Exceptions\BaseException;
 class Handler extends ExceptionHandler
 {
     ...
-    
+
     public function render($request, Exception $exception)
     {
         ...
-        
+
         if ($exception instanceof BaseException) {
             if ($response = BackProjectHandler::getResponse($exception)) {
                 return $response;
             }
         }
-        
+
         ...
-        
+
         return parent::render($request, $exception);
     }
 }
 ```
 
-### Usage
+### Let's Start
 Once completed the [Installation](#installation) and [Configuration](#configuration) sections, go to your project's url (www.example.com/register), register and activate the first user who will be the site administrator.
 
 ### Media Manager
@@ -276,13 +260,13 @@ return array(
     |
     | Enter the routes name to enable dynamic imagecache manipulation.
     | This handle will define the first part of the URI:
-    | 
+    |
     | {route}/{template}/{filename}
-    | 
+    |
     | Examples: "images", "img/cache"
     |
     */
-   
+
     'route' => [FIRST PART OF THE URI YOU WANT FOR DISPLAYING IMAGES],
 
     /*
@@ -290,26 +274,26 @@ return array(
     | Storage paths
     |--------------------------------------------------------------------------
     |
-    | The following paths will be searched for the image filename, submited 
-    | by URI. 
-    | 
+    | The following paths will be searched for the image filename, submited
+    | by URI.
+    |
     | Define as many directories as you like.
     |
     */
-    
+
     'paths' => array(
 	// Insert here your uploads directory
         public_path('upload'),
         public_path('images')        
     ),
-    
+
     /*
         |--------------------------------------------------------------------------
         | Manipulation templates
         |--------------------------------------------------------------------------
         |
         | Here you may specify your own manipulation filter templates.
-        | The keys of this array will define which templates 
+        | The keys of this array will define which templates
         | are available in the URI:
         |
         | {route}/{template}/{filename}
@@ -318,13 +302,13 @@ return array(
         | will be applied, by its fully qualified name.
         |
         */
-       
+
         'templates' => array(
             'small' => 'Intervention\Image\Templates\Small',
             'medium' => 'Intervention\Image\Templates\Medium',
             'large' => 'Intervention\Image\Templates\Large',
         ),
-    
+
         /*
         |--------------------------------------------------------------------------
         | Image Cache Lifetime
@@ -333,9 +317,9 @@ return array(
         | Lifetime in minutes of the images handled by the imagecache route.
         |
         */
-       
+
         'lifetime' => 43200,
-    
+
     );
 
 ```
@@ -353,15 +337,15 @@ use Afrittella\BackProject\Traits\HasOneAttachment;
 class Model
 {
     use HasOneAttachment;
-    
+
     ...
 }
 ```
-You can change the folder where files are uploaded in config/filesystems.php 
+You can change the folder where files are uploaded in config/filesystems.php
 
 ### ToDo
 - Full documentation.
-- Tests.
+- More Tests.
 - Localization.
 - Better assets (js/css) management.
 
@@ -382,7 +366,7 @@ Back Project depends on the following packages:
 - [intervention/image](https://github.com/Intervention/image)
 - [intervention/imagecache](https://github.com/Intervention/imagecache)
 - [laravel/socialite](https://github.com/laravel/socialite)
- 
+
  ### License
- 
+
  This package is licensed under the [MIT license](https://github.com/backup-manager/laravel/blob/master/LICENSE).
