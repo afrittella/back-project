@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    use DatabaseMigrations;
+    
 
     protected $userModel;
 

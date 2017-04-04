@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 
 class UsersTest extends TestCase
 {
-    use DatabaseMigrations, EntitiesHelper;
+    use EntitiesHelper;
 
     protected $users; // Users repository
 

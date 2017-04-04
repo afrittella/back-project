@@ -2,6 +2,7 @@
   "name": "afrittella/back-project",
   "description": "Just another admin panel for Laravel. Inspired by Backpack.",
   "require": {
+    "php" : "~5.6|~7.0",
     "illuminate/support": "^5.4",
     "laravel/framework": "^5.4",
     "almasaeed2010/adminlte": "^2.3",
@@ -15,7 +16,8 @@
     "caouecs/laravel-lang": "~3.0",
     "intervention/image": "^2.3",
     "intervention/imagecache": "^2.3",
-    "laravel/socialite": "^3.0"
+    "laravel/socialite": "^3.0",
+    "illuminate/database": "^5.4"
   },
   "license": "MIT",
   "authors": [
@@ -31,11 +33,15 @@
       "Afrittella\\BackProject\\": "src/app"
     }
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require-dev": {
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~5.7",
     "fzaninotto/faker": "~1.4",
-    "orchestra/testbench": "^3.4"
+    "orchestra/testbench": "^3.4",
+    "orchestra/database": "*",
+    "friendsofphp/php-cs-fixer": "^1.11"
   },
   "autoload-dev": {
     "psr-4": {

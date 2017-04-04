@@ -14,13 +14,14 @@ use Illuminate\Support\Collection;
 
 class AttachmentsTest extends TestCase
 {
-    use DatabaseMigrations, EntitiesHelper;
+    use EntitiesHelper;
 
     protected $attachments; // Users repository
 
     public function setUp()
     {
         parent::setUp();
+
         $this->attachments = new Attachments(new Collection());
         $this->users = new Users(new Collection());
     }

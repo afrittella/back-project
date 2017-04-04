@@ -47,7 +47,8 @@ class BackProjectServiceProvider extends ServiceProvider
 
         $this->publishFiles();
 
-        $this->handleMigrations();
+        //$this->handleMigrations();
+        $this->loadMigrationsFrom(realpath(__DIR__.'/../database/migrations'));
 
         $this->registerEvents();
 

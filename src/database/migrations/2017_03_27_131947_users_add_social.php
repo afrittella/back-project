@@ -10,7 +10,6 @@ class UsersAddSocial extends Migration
         Schema::table('users', function(Blueprint $table) {
            $table->string('email')->nullable()->change();
            $table->boolean('is_social')->nullable()->default(0);
-           $table->string('username')->unique()->change();
         });
     }
 
@@ -19,7 +18,6 @@ class UsersAddSocial extends Migration
         Schema::table('users', function(Blueprint $table) {
            $table->dropColumn('is_social');
            $table->string('email')->change();
-           $table->string('username')->change();
         });
     }
 }
