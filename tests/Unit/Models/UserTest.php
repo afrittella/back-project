@@ -15,7 +15,7 @@ class UserTest extends TestCase
     {
         parent::setUp();
 
-        $this->userModel = config('back-project.user_model');
+        $this->userModel = 'Afrittella\BackProject\Models\Auth\User';
     }
 
     public function testIfIsConfirmed()

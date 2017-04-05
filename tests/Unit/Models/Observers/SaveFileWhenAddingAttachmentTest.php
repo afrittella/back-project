@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Unit\Models\Observers;
 
-use Tests\TestCase;
+use Tests\OriginalTestCase;
 
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Afrittella\BackProject\Models\Attachment;
 use Afrittella\BackProject\Models\Observers\SaveFileWhenAddingAttachment;
 
-class SaveFileWhenAddingAttachmentTest extends TestCase
+class SaveFileWhenAddingAttachmentTest extends OriginalTestCase
 {
     private $attachmentMock;
     private $requestMock;

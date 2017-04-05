@@ -2,13 +2,14 @@
 
 namespace Tests\Unit\Models\Observers;
 
+use Tests\OriginalTestCase;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 
 use Afrittella\BackProject\Models\Attachment;
 use Afrittella\BackProject\Models\Observers\RemoveFileWhenDeletingAttachment;
 
-class RemoveFileWhenDeletingAttachmentTest extends TestCase
+class RemoveFileWhenDeletingAttachmentTest extends OriginalTestCase
 {
     private $attachmentMock;
     private $requestMock;
