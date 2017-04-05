@@ -1,5 +1,6 @@
 [![StyleCI](https://styleci.io/repos/84803631/shield?branch=master)](https://styleci.io/repos/84803631)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
 
 # Back Project
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
