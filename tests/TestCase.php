@@ -39,8 +39,8 @@ class TestCase extends BaseTestCase
             'host' => env('TRAVIS_HOST', 'mariadb'),
             'database' => 'family_test',
             'prefix'   => '',
-            'username' => 'test',
-            'password' => 'test',
+            'username' => env('TRAVIS_USER', 'test'),
+            'password' => env('TRAVIS_PASSWORD', 'test'),
         ]);
     }
 
