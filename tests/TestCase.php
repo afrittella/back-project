@@ -36,7 +36,7 @@ class TestCase extends BaseTestCase
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
             'driver'   => 'mysql',
-            'host' => 'mariadb',
+            'host' => env('TRAVIS_HOST', 'mariadb'),
             'database' => 'family_test',
             'prefix'   => '',
             'username' => 'test',

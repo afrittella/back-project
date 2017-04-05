@@ -17,6 +17,9 @@ addons:
 services:
   - mysql
 
+env:
+ - TRAVIS_HOST = mysql
+
 before_script:
   - mysql -u root -e 'create database family_test;'
   - composer self-update
