@@ -18,9 +18,7 @@ services:
   - mysql
 
 env:
- - TRAVIS_HOST = 127.0.0.1
- - TRAVIS_USER = root
- - TRAVIS_PASSWORD = ""
+ - TRAVIS_HOST=127.0.0.1 TRAVIS_USER=root TRAVIS_PASSWORD=""
 
 before_script:
   - mysql -u root -e 'create database family_test;'
