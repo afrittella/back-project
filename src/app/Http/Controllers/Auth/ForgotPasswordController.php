@@ -2,7 +2,6 @@
 namespace Afrittella\BackProject\Http\Controllers\Auth;
 
 use Afrittella\BackProject\Http\Controllers\Controller;
-
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

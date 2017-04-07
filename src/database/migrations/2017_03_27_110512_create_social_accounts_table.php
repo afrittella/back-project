@@ -9,7 +9,7 @@ class CreateSocialAccountsTable extends Migration
 {
     public function up()
     {
-        Schema::create('social_accounts', function (Blueprint $table) {
+        Schema::create('social_accounts', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('provider')->index();

@@ -3,11 +3,8 @@
 namespace Afrittella\BackProject\Listeners;
 
 use Afrittella\BackProject\Events\UserRegistered;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
 use Afrittella\BackProject\Repositories\Users;
-
 use Illuminate\Support\Facades\Log;
 use Afrittella\BackProject\Notifications\RegistrationEmail;
 
@@ -32,12 +29,12 @@ class SendRegistrationEmail implements ShouldQueue
      */
     public function handle(UserRegistered $event)
     {
-      //try {
+        //try {
         $user = $this->users->findBy('id', $event->user_id);
         $user->notify(new RegistrationEmail($user));
-      //} catch(\Exception $e) {
+        //} catch(\Exception $e) {
         //Log::error('lavoro fallito');
-      //}
+        //}
 
     }
 

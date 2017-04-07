@@ -14,9 +14,9 @@ class ModifyUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-          $table->renameColumn('name', 'username');
-          $table->boolean('confirmed')->default(0);
-          $table->string('confirmation_code')->nullable();
+            $table->renameColumn('name', 'username');
+            $table->boolean('confirmed')->default(0);
+            $table->string('confirmation_code')->nullable();
         });
     }
 
@@ -27,10 +27,10 @@ class ModifyUsersTable extends Migration
      */
     public function down()
     {
-      Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function(Blueprint $table) {
         $table->renameColumn('username', 'name');
         $table->dropColumn('confirmed');
         $table->dropColumn('confirmation_code');
-      });
+        });
     }
 }

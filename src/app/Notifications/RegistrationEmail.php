@@ -4,7 +4,6 @@ namespace Afrittella\BackProject\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class RegistrationEmail extends Notification
@@ -27,7 +26,7 @@ class RegistrationEmail extends Notification
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
-     * @return array
+     * @return string[]
      */
     public function via($notifiable)
     {

@@ -11,7 +11,7 @@ class CreateMenusTable extends Migration
 
     public function __construct()
     {
-      $this->table_menus = config('back-project.menus.table');
+        $this->table_menus = config('back-project.menus.table');
     }
 
     /**
@@ -22,17 +22,17 @@ class CreateMenusTable extends Migration
     public function up()
     {
         Schema::create($this->table_menus, function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('name')->index();
-          $table->string('permission')->nullable()->index();
-          $table->string('title');
-          $table->string('description')->nullable();
-          $table->string('route')->nullable();
-          $table->string('icon')->nullable();
-          $table->boolean('is_active')->default(1);
+            $table->increments('id');
+            $table->string('name')->index();
+            $table->string('permission')->nullable()->index();
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->string('route')->nullable();
+            $table->string('icon')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->boolean('is_protected')->default(0);
-          NestedSet::columns($table);
-          $table->timestamps();
+            NestedSet::columns($table);
+            $table->timestamps();
 
 
         });

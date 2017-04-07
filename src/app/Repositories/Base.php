@@ -7,7 +7,6 @@ use Afrittella\BackProject\Exceptions\NotFoundException;
 use Afrittella\BackProject\Exceptions\NotSavedException;
 use Afrittella\BackProject\Exceptions\RepositoryException;
 use Afrittella\BackProject\Repositories\Criteria\Criteria;
-use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -48,7 +47,7 @@ abstract class Base implements BaseRepository, CriteriaInterface
         return $this->model->create($data);
     }
 
-    public function update(array $data, $id, $attribute="id")
+    public function update(array $data, $id, $attribute = "id")
     {
         $model_data = $this->model->where($attribute, '=', $id)->first();
 
@@ -96,6 +95,9 @@ abstract class Base implements BaseRepository, CriteriaInterface
         return $this->model->findOrCreate($data);
     }
 
+    /**
+     * @param string $attribute
+     */
     public function findBy($attribute, $value, $columns = array('*'))
     {
         $this->applyCriteria();
@@ -107,8 +109,9 @@ abstract class Base implements BaseRepository, CriteriaInterface
         //$model = $this->app->make($this->model());
         $model = app()->make($this->model());
 
-        if (!$model instanceof Model)
-            throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        if (!$model instanceof Model) {
+                    throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        }
 
         return $this->model = $model;
     }
@@ -123,7 +126,7 @@ abstract class Base implements BaseRepository, CriteriaInterface
         return $this;
     }
 
-    public function skipCriteria($status = true){
+    public function skipCriteria($status = true) {
         $this->skipCriteria = $status;
         return $this;
     }
@@ -143,11 +146,11 @@ abstract class Base implements BaseRepository, CriteriaInterface
     }
 
     public function  applyCriteria() {
-        if($this->skipCriteria === true)
+        if ($this->skipCriteria === true)
             return $this;
 
-        foreach($this->getCriteria() as $criteria) {
-            if($criteria instanceof Criteria)
+        foreach ($this->getCriteria() as $criteria) {
+            if ($criteria instanceof Criteria)
                 $this->model = $criteria->apply($this->model, $this);
         }
 

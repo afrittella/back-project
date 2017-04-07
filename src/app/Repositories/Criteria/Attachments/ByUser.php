@@ -2,7 +2,7 @@
 namespace Afrittella\BackProject\Repositories\Criteria\Attachments;
 
 use Afrittella\BackProject\Repositories\Criteria\Criteria;
-use Afrittella\BackProject\Contracts\BaseRepository as  Repository;
+use Afrittella\BackProject\Contracts\BaseRepository as Repository;
 use Illuminate\Support\Facades\Auth;
 
 class ByUser extends Criteria {

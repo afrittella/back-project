@@ -1,8 +1,6 @@
 <?php
 namespace Afrittella\BackProject\Repositories;
 
-use Afrittella\BackProject\Contracts\BaseRepository;
-
 class Roles extends Base
 {
     public function model()
@@ -54,7 +52,7 @@ class Roles extends Base
         $body = [];
 
         foreach ($data as $row):
-            $actions =[];
+            $actions = [];
 
             if ($row->name !== 'administrator' and $row->name !== 'user') {
                 $actions = [

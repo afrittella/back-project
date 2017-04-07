@@ -15,7 +15,7 @@ class RegisterController extends Controller
 
     protected $data = []; // the information we send to the view
 
-  use RegistersUsers;
+    use RegistersUsers;
 
     /**
      * Create a new controller instance.
@@ -50,7 +50,7 @@ class RegisterController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function register(Request $request, Users $users)
     {
@@ -77,24 +77,24 @@ class RegisterController extends Controller
 
     public function validator(array $data)
     {
-      $user_model = config('back-project.user_model');
-      $user = new $user_model;
-      $users_table = $user->getTable();
+        $user_model = config('back-project.user_model');
+        $user = new $user_model;
+        $users_table = $user->getTable();
 
-      return Validator::make($data, [
+        return Validator::make($data, [
         'username' => 'required|max:255|unique:'.$users_table,
         'email' => 'required|email|max:255|unique:'.$users_table,
         'password' => 'required|min:6|confirmed'
-      ]);
+        ]);
     }
 
     public function confirm(Users $users, $code, $username) {
-      if ($users->findBy('username', $username)->confirm($code)) {
-          Alert::add('success', trans('back-project::base.user_confirmed'))->flash();
-      } else {
-          Alert::add('error', trans('back-project::base.user_not_confirmed'))->flash();
-      }
+        if ($users->findBy('username', $username)->confirm($code)) {
+            Alert::add('success', trans('back-project::base.user_confirmed'))->flash();
+        } else {
+            Alert::add('error', trans('back-project::base.user_not_confirmed'))->flash();
+        }
 
-      return redirect(route('login'));
+        return redirect(route('login'));
     }
 }
