@@ -21,7 +21,7 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->table_menus, function (Blueprint $table) {
+        Schema::create($this->table_menus, function(Blueprint $table) {
             $table->increments('id');
             $table->string('name')->index();
             $table->string('permission')->nullable()->index();

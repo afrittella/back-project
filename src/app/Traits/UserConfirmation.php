@@ -30,12 +30,12 @@ trait UserConfirmation
 
     public function hasConfirmationCode()
     {
-    return ! is_null($this->{$this->confirmation_token_field} );
+    return !is_null($this->{$this->confirmation_token_field} );
     }
 
     public function isPendingConfirmation()
     {
-    return ! $this->isConfirmed() && $this->hasConfirmationCode();
+    return !$this->isConfirmed() && $this->hasConfirmationCode();
     }
 
     public function getConfirmationField()

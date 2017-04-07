@@ -146,12 +146,14 @@ abstract class Base implements BaseRepository, CriteriaInterface
     }
 
     public function  applyCriteria() {
-        if ($this->skipCriteria === true)
-            return $this;
+        if ($this->skipCriteria === true) {
+                    return $this;
+        }
 
         foreach ($this->getCriteria() as $criteria) {
-            if ($criteria instanceof Criteria)
-                $this->model = $criteria->apply($this->model, $this);
+            if ($criteria instanceof Criteria) {
+                            $this->model = $criteria->apply($this->model, $this);
+            }
         }
 
         return $this;
