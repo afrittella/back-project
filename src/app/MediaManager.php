@@ -14,7 +14,7 @@ class MediaManager {
     {
         //@TODO implement google or s3 cloud storage support
         //if (config('filesystems.default') == 'google') {
-          //  $this->media_path = Storage::disk()->getDriver()->getAdapter()->getStorageApiUri() . '/' . Storage::disk()->getDriver()->getAdapter()->getBucket()->name();
+            //  $this->media_path = Storage::disk()->getDriver()->getAdapter()->getStorageApiUri() . '/' . Storage::disk()->getDriver()->getAdapter()->getBucket()->name();
         //} else {
         //$this->media_path = Storage::disk()->getDriver()->getAdapter()->getPathPrefix();
         //}
@@ -51,7 +51,7 @@ class MediaManager {
     {
         $format = $this->chooseFormat($format);
 
-        return '<img src="'.$this->getCachedImageUrl($format, $image->name).'" alt="'.$image->description.'" '.$attributes. '>';
+        return '<img src="'.$this->getCachedImageUrl($format, $image->name).'" alt="'.$image->description.'" '.$attributes.'>';
     }
 
     protected function chooseFormat($format)

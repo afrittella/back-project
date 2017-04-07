@@ -16,7 +16,7 @@ class Controller extends BaseController
     /**
      * Custom authorization method. Use only if you are managing a model with "user_id" field
      *
-     * @param $ability
+     * @param string $ability
      * @param array $record
      */
     public function bCAuthorize($ability, $record = [])

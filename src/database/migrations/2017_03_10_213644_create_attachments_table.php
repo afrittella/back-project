@@ -20,7 +20,7 @@ class CreateAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->table_attachments, function (Blueprint $table) {
+        Schema::create($this->table_attachments, function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('original_name');
@@ -33,8 +33,8 @@ class CreateAttachmentsTable extends Migration
         });
 
         Schema::create('attachables', function(Blueprint $table) {
-           $table->integer('attachment_id')->unsigned();
-           $table->morphs('attachable');
+            $table->integer('attachment_id')->unsigned();
+            $table->morphs('attachable');
         });
     }
 

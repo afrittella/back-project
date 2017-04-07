@@ -22,11 +22,11 @@ class Role
             return redirect()->guest('login');
         }
 
-        if (! $request->user()->hasRole($role)) {
+        if (!$request->user()->hasRole($role)) {
             abort(403);
         }
 
-        if (!empty($permission) and ! $request->user()->can($permission)) {
+        if (!empty($permission) and !$request->user()->can($permission)) {
             abort(403);
         }
 

@@ -10,7 +10,7 @@ class Attachments extends Base
         return 'Afrittella\BackProject\Models\Attachment';
     }
 
-    public function update(array $data, $id, $attribute="id")
+    public function update(array $data, $id, $attribute = "id")
     {
         $model_data = $this->model->where($attribute, '=', $id)->first();
 

@@ -19,6 +19,6 @@ trait HasManyAttachments {
 
     public function attachments()
     {
-        return $this->morphToMany( Attachment::class, 'attachable' )->orderBy('is_main', 'desc');
+        return $this->morphToMany(Attachment::class, 'attachable')->orderBy('is_main', 'desc');
     }
 }

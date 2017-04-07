@@ -10,24 +10,24 @@ class LoginController extends Controller
 {
 
     use AuthenticatesUsers {
-      logout as defaultLogout;
+        logout as defaultLogout;
     }
 
     public function __construct()
     {
-      $this->middleware('guest', ['except' => 'logout']);
-      // ----------------------------------
-      // Use the admin prefix in all routes
-      // If not logged in redirect here.
-      $this->loginPath = property_exists($this, 'loginPath') ? $this->loginPath
+        $this->middleware('guest', ['except' => 'logout']);
+        // ----------------------------------
+        // Use the admin prefix in all routes
+        // If not logged in redirect here.
+        $this->loginPath = property_exists($this, 'loginPath') ? $this->loginPath
           : config('back-project.route_prefix', 'admin').'/login';
-      // Redirect here after successful login.
-      $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo
+        // Redirect here after successful login.
+        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo
           : config('back-project.route_prefix', 'admin').'/dashboard';
-      // Redirect here after logout.
-      $this->redirectAfterLogout = property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout
+        // Redirect here after logout.
+        $this->redirectAfterLogout = property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout
           : '/';
-      // ----------------------------------
+        // ----------------------------------
     }
 
     /**
