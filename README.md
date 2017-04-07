@@ -1,3 +1,4 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/afrittella/back-project/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/afrittella/back-project/?branch=master)
 [![StyleCI](https://styleci.io/repos/84803631/shield?branch=master)](https://styleci.io/repos/84803631)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
@@ -75,7 +76,6 @@ Social login is disabled by default. To use it you must follow these steps:
     *.env*
 
     ```apacheconfig
-    ...
     FACEBOOK_ID = XXXXXXXX
     FACEBOOK_SECRET = XXXXX
     FACEBOOK_REDIRECT = http://example.com/auth/facebook/callback
