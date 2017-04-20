@@ -1,5 +1,11 @@
 # Change Log
 
+## V1.0.1
+Updated typo in README.md
+
+## V1.0
+First official release
+
 ## V1.0.0-beta4
 Added some tests.
 
