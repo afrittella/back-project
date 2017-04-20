@@ -22,8 +22,10 @@ class AttachmentsTest extends TestCase
     {
         parent::setUp();
 
-        $this->attachments = new Attachments(new Collection());
-        $this->users = new Users(new Collection());
+        $this->attachments = \App::make(Attachments::class);
+        //$this->attachments = new Attachments(new Collection());
+        $this->users = \App::make(Users::class);
+        //$this->users = new Users(new Collection());
     }
 
     public function testRemoveIsMain()

@@ -19,7 +19,8 @@ class UsersTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->users = new Users(new Collection());
+        //$this->users = new Users(new Collection());
+        $this->users = \App::make(Users::class);
     }
 
     public function testCanGetAll()
