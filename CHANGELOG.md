@@ -1,9 +1,12 @@
 # Change Log
 
-## V1.0.1
+## 1.0.2
+Updated README.md with new installation with composer
+
+## 1.0.1
 Updated typo in README.md
 
-## V1.0
+## 1.0
 First official release
 
 ## V1.0.0-beta4
