@@ -3,7 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
 
-# Back Project 1.0.1
+# Back Project 1.0 (1.0.2)
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
 
 ### Features
@@ -15,26 +15,12 @@ Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://gith
 - Social Login
 
 ### Installation
-This package is still in beta version, so if you want to try it, you had to insert some code in your composer.json
-
-```
-"repositories" : [         
-         {
-          "type": "vcs",
-          "url": "https://github.com/afrittella/back-project"
-         }
-     ],
-     "minimum-stability": "dev",
-     "prefer-stable": true
-```
-
-Run
 ```
 composer require afrittella/back-project
 ```
 
 Add the Service Provider to your config.app service providers list:
-```
+```php
 Afrittella\BackProject\BackProjectServiceProvider::class,
 
 ```
