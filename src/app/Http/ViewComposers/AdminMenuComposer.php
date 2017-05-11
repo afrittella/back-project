@@ -12,7 +12,7 @@ class AdminMenuComposer {
 
     public function __construct(MenuRepository $menuRepository)
     {
-        $this->menuRepository = $menuRepository;
+      $this->menuRepository = $menuRepository;
     }
 
     public function compose(View $view)
@@ -91,25 +91,26 @@ class AdminMenuComposer {
           <a href="%s"><i class="%s text-red"></i><span>%s</span></a>
         ' // url, icon, title
         ];
-        $traverse = function($rows) use (&$traverse, $templates, $user) {
+        $traverse = function ($rows) use (&$traverse, $templates, $user) {
             $menuString = "";
             $hasActive = false;
             foreach ($rows as $menu) {
-                if (!empty($menu->permission) and !$user->hasPermission($menu->permission)) {
-                    continue;
-                }
-                $hasActive = false;
-                $link = sprintf($templates['menu_link'],
+              if (!empty($menu->permission) and !$user->hasPermission($menu->permission)) {
+                  continue;
+              }
+
+              $hasActive = false;
+              $link = sprintf($templates['menu_link'],
                 (!empty($menu->route) ? url($menu->route) : '#'),
                 (!empty($menu->icon) ? $menu->icon : 'fa fa-circle-o'),
                 //trans('back-project::base.dashboard')
-                __('back-project::menu.'.$menu->title)
-                );
+                \Lang::has('back-project::menu.'.$menu->title) ? __('back-project::menu.'.$menu->title) : $menu->title
+              );
 
-                $submenu = "";
-                $authorized = true;
+              $submenu = "";
+              $authorized = true;
 
-                if ($menu->children->count() > 0) {
+              if ($menu->children->count() > 0) {
                 list($submenuString, $hasActive) = $traverse($menu->children);
                 $submenu = "";
                 if (!empty($submenuString)) {
@@ -117,19 +118,19 @@ class AdminMenuComposer {
                 } else {
                     $authorized = false;
                 }
-                }
+              }
 
-                $class = (!empty($submenu) ? 'treeview' : '');
-                $current_url = \Route::current()->uri();
+              $class = (!empty($submenu) ? 'treeview' : '');
+              $current_url = \Route::current()->uri();
 
-                if ($authorized) {
-                    $menuString .= sprintf($templates['menu_row'], $class, $link.$submenu);
-                }
+              if ($authorized) {
+                  $menuString .= sprintf($templates['menu_row'], $class, $link.$submenu);
+              }
         }
 
         return [
-                $menuString,
-                $hasActive
+              $menuString,
+              $hasActive
             ];
         };
 

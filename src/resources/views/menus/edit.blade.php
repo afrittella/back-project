@@ -26,7 +26,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-9 col-md-push-1">
+        <div class="col-md-12">
             <a href="{{ route('menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.edit'), 'box_icon' => 'pencil'])
                 {!! Form::model($menu, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['menus.update', $menu->id]]) !!}

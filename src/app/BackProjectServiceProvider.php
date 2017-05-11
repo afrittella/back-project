@@ -33,13 +33,13 @@ class BackProjectServiceProvider extends ServiceProvider
         // - first the published views (in case they have any changes)
         $this->loadViewsFrom(resource_path('views/vendor/back-project/base'), 'back-project');
         // - then the stock views that come with the package, in case a published view might be missing
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'back-project');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'back-project');
         // Load Translations
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'back-project');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'back-project');
 
         // use the vendor configuration file as fallback
         $this->mergeConfigFrom(
-            __DIR__.'/../config/config.php', 'back-project'
+            __DIR__ . '/../config/config.php', 'back-project'
         );
 
         $this->routes($router);
@@ -63,11 +63,11 @@ class BackProjectServiceProvider extends ServiceProvider
             return new BackProject($app);
         });*/
 
-        $this->app->singleton('attachments-manager', function($app) {
+        $this->app->singleton('attachments-manager', function ($app) {
             return new MediaManager();
         });
 
-        $this->app->singleton('back-project', function($app) {
+        $this->app->singleton('back-project', function ($app) {
             return new BackProject();
         });
 
@@ -104,15 +104,15 @@ class BackProjectServiceProvider extends ServiceProvider
     public function publishFiles()
     {
         // publish config file
-        $this->publishes([__DIR__.'/../config/config.php' => config_path().'/back-project.php'], 'config');
+        $this->publishes([__DIR__ . '/../config/config.php' => config_path() . '/back-project.php'], 'config');
         // publish lang files
-        $this->publishes([__DIR__.'/../resources/lang' => resource_path('lang/vendor/back-project')], 'lang');
-        // publish public Backpack assets
-        $this->publishes([__DIR__.'/../public' => public_path('vendor/back-project')], 'public');
+        $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang/vendor/back-project')], 'lang');
+        // publish public BackProject assets
+        $this->publishes([__DIR__ . '/../public' => public_path('vendor/back-project')], 'public');
         // publish views
-        $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/back-project')], 'views');
+        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/back-project')], 'views');
         // publish error views
-        $this->publishes([__DIR__.'/../resources/error_views' => resource_path('views/errors')], 'errors');
+        $this->publishes([__DIR__ . '/../resources/error_views' => resource_path('views/errors')], 'errors');
         // publish public AdminLTE assets
         $this->publishes(['vendor/almasaeed2010/adminlte/bootstrap' => public_path('vendor/adminlte/bootstrap')], 'adminlte');
         $this->publishes(['vendor/almasaeed2010/adminlte/dist' => public_path('vendor/adminlte/dist')], 'adminlte');
@@ -127,7 +127,7 @@ class BackProjectServiceProvider extends ServiceProvider
         //$router->aliasMiddleware('guest', \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class);
         $router->aliasMiddleware('role', \Afrittella\BackProject\Http\Middleware\Role::class);
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
     }
 
     public function handleMigrations()
@@ -137,8 +137,8 @@ class BackProjectServiceProvider extends ServiceProvider
                 $timestamp = date('Y_m_d_His', time());
 
                 $this->publishes([
-                    __DIR__.'/../database/migrations/'.$file.'.php' =>
-                        database_path('migrations/'.$timestamp.'_'.$file.'.php')
+                    __DIR__ . '/../database/migrations/' . $file . '.php' =>
+                        database_path('migrations/' . $timestamp . '_' . $file . '.php')
                 ], 'migrations');
             }
         }
@@ -178,7 +178,7 @@ class BackProjectServiceProvider extends ServiceProvider
     public function loadHelpers()
     {
         foreach ($this->helpers as $helper):
-            $file = __DIR__.'/Helpers/'.$helper.'.php';
+            $file = __DIR__ . '/Helpers/' . $helper . '.php';
 
             if (file_exists($file)) {
                 require_once($file);
