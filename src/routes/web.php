@@ -1,6 +1,6 @@
 <?php
-Route::group(['namespace' => '\Afrittella\BackProject\Http\Controllers'], function() {
-    Route::group(['middleware' => 'web'], function() {
+Route::group(['namespace' => '\Afrittella\BackProject\Http\Controllers'], function () {
+    Route::group(['middleware' => 'web'], function () {
         Route::get('confirm/{code}/{user}', 'Auth\RegisterController@confirm')->name('users.confirm');
         Route::auth();
 
@@ -8,7 +8,7 @@ Route::group(['namespace' => '\Afrittella\BackProject\Http\Controllers'], functi
         Route::get('auth/{provider}/callback', 'Auth\SocialLoginController@handleProviderCallback')->name('social_callback');
     });
 
-    Route::group(['middleware' => 'web', 'prefix' => config('back-project.route_prefix')], function() {
+    Route::group(['middleware' => 'web', 'prefix' => config('back-project.route_prefix')], function () {
         Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
         Route::get('account', 'UsersController@account')->name('admin.account');
         Route::put('account', 'UsersController@accountStore')->name('admin.add-account');
@@ -18,7 +18,7 @@ Route::group(['namespace' => '\Afrittella\BackProject\Http\Controllers'], functi
         Route::get('attachments/{attachment}/main', 'AttachmentsController@setMain')->name('attachments.main');
         Route::resource('attachments', 'AttachmentsController', ['except' => ['destroy', 'show']]);
         // Users
-        Route::group(['middleware' => 'role:administrator'], function() {
+        Route::group(['middleware' => 'role:administrator'], function () {
             Route::get('users/{user}/delete', 'UsersController@delete')->name('users.delete'); // Implementing delete avoiding DELETE method
             Route::resource('users', 'UsersController', ['except' => ['destroy', 'show']]);
 

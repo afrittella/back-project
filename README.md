@@ -3,7 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
 
-# Back Project 1.0 (1.0.2)
+# Back Project 1.0 (1.0.3)
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
 
 ### Features
@@ -332,10 +332,10 @@ class Model
 You can change the folder where files are uploaded in config/filesystems.php
 
 ### ToDo
-- Full documentation.
+- Full documentation on wiki.
 - More Tests.
-- Localization.
 - Better assets (js/css) management.
+- Better translations management.
 
 ### Credits
 

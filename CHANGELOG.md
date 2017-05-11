@@ -1,4 +1,7 @@
 # Change Log
+## 1.0.3
+- Updated translations for back-project-categories package.
+- Minor changes and bug fixes.
 
 ## 1.0.2
 Updated README.md with new installation with composer

@@ -7,5 +7,6 @@ return [
     'Permissions' => 'Permessi',
     'Menus' => 'Menu',
     'My Media' => 'Le mie immagini',
-    'All Media' => 'Tutte le immagini'
+    'All Media' => 'Tutte le immagini',
+    'Categories' => 'Categorie'
 ];

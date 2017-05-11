@@ -2,6 +2,7 @@
 
 namespace Afrittella\BackProject\Http\Controllers;
 
+use Afrittella\BackProject\Exceptions\NotFoundException;
 use Afrittella\BackProject\Http\Requests\AttachmentAdd;
 use Afrittella\BackProject\Repositories\Attachments;
 use Afrittella\BackProject\Repositories\Criteria\Attachments\ByUser;
