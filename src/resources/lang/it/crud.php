@@ -9,6 +9,7 @@ return [
     // Buttons
     'save' => 'Salva',
     'cancel' => 'Annulla',
+    'back' => 'Indietro',
 
     // Dialogs
     'are_you_sure' => 'Confermi l\'eliminazione?',

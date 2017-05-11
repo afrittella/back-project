@@ -5,13 +5,6 @@ use Illuminate\Support\Facades\Storage;
 
 trait Attachable
 {
-    protected $media_path;
-    //protected $multi = false;
-
-    public function __construct()
-    {
-        $this->media_path = Storage::disk()->getDriver()->getAdapter()->getPathPrefix();
-    }
 
     public function addAttachment($data = [])
     {

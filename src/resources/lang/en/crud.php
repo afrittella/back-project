@@ -9,6 +9,7 @@ return [
     // Buttons
     'save' => 'Save',
     'cancel' => 'Cancel',
+    'back' => 'Indietro',
 
     // Dialogs
     'are_you_sure' => 'Are you sure?',
