@@ -1,21 +1,23 @@
 <?php namespace Afrittella\BackProject\Traits;
 
 use Afrittella\BackProject\Models\Attachment;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 trait Attachable
 {
 
     public function addAttachment($data = [])
     {
+        $user = Auth::user();
+
         // If morphOne attachment, and one attachment is present, we must delete it
         if (!$this->multi and $this->hasAttachments()) {
             $this->deleteAttachment($this->getAttachment());
         }
 
-        $attachment = $this->attachments()->create($data);
+        return $this->attachments()->create(array_merge($data, ['user_id' => $user->id]));
 
-        return $attachment->save();
+        //return $attachment->save();
     }
 
     public function deleteAttachment(Attachment $attachment)
