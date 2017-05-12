@@ -1,4 +1,9 @@
 # Change Log
+## 1.0.4
+- Added Services\SlugGenerator for unique slugs generation. The facade class is automatically added by BackProjectServiceProvider
+- Added Traits\Sluggable for unique slugs generation on Eloquent models.
+- Minor changes and bug fixes.
+
 ## 1.0.3
 - Updated translations for back-project-categories package.
 - Minor changes and bug fixes.
