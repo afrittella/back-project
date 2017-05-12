@@ -7,11 +7,12 @@ use Afrittella\BackProject\Traits\Attachable;
  * MorphToOne relation
  */
 trait HasOneAttachment {
-    use Attachable;
     /*
      * Indicates if is a one to many relation or one to one
      */
     protected $multi = false;
+
+    use Attachable;
 
     /**
      * Gel attachment for this model
@@ -20,7 +21,7 @@ trait HasOneAttachment {
      */
     public function attachments()
     {
-        return $this->morphToMany(Attachment::class, 'attachable')->orderBy('is_main', 'desc');
+        return $this->morphToMany( Attachment::class, 'attachable' )->orderBy('is_main', 'desc');
     }
 
     public function getAttachment() {

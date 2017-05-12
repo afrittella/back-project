@@ -6,9 +6,13 @@ use Afrittella\BackProject\Models\Attachment;
 use Afrittella\BackProject\Models\Observers\RemoveAttachableWheDeletingAttachment;
 use Afrittella\BackProject\Models\Observers\RemoveFileWhenDeletingAttachment;
 use Afrittella\BackProject\Models\Observers\SaveFileWhenAddingAttachment;
+use Afrittella\BackProject\Services\MediaManager;
+use Afrittella\BackProject\Services\BackProject;
+use Afrittella\BackProject\Services\SlugGenerator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 use function Symfony\Component\HttpKernel\Tests\controller_func;
+
 
 class BackProjectServiceProvider extends ServiceProvider
 {
@@ -71,6 +75,10 @@ class BackProjectServiceProvider extends ServiceProvider
             return new BackProject();
         });
 
+        $this->app->singleton('slug-generator', function ($app) {
+            return new SlugGenerator();
+        });
+
         // @TODO understand the use of contracts
         //$this->app->singleton(\Afrittella\BackProject\Contracts\FormBuilder::class, \Afrittella\BackProject\FormBuilder::class);
         //$this->app->singleton('form-builder', \Afrittella\BackProject\FormBuilder::class);
@@ -92,6 +100,7 @@ class BackProjectServiceProvider extends ServiceProvider
         $loader->alias('Html', \Collective\Html\HtmlFacade::class);
         $loader->alias('Avatar', \Laravolt\Avatar\Facade::class);
         $loader->alias('MediaManager', \Afrittella\BackProject\Facades\MediaManager::class);
+        $loader->alias('SlugGenerator', \Afrittella\BackProject\Facades\SlugGenerator::class);
         $loader->alias('Image', \Intervention\Image\Facades\Image::class);
         $loader->alias('Socialite', \Laravel\Socialite\Facades\Socialite::class);
 

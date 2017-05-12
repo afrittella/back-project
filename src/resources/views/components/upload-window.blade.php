@@ -26,35 +26,45 @@
         $( document ).ready(function() {
             Dropzone.autoDiscover = false;
 
-            var dropz = $("form.dropzone").dropzone({
-                dictDefaultMessage: "{{ trans('back-project::base.file_upload') }}",
-                acceptedFiles: "image/*",
-                paramName: 'attachment',
-                maxFiles: {{ $max_upload_files or "null" }},
-                maxFileSize: {{config('back-project.attachments.max_file_size')}},
-                init: function() {
-                    this.on("success", function() {
-                        location.reload();
-                    });
+            $('#media-manager-single-upload').on('show.bs.modal', function(e) {
+                var url = $(e.relatedTarget).data('url');
 
-                    this.on("error", function(file, message) {
-                        if (message.attachment) {
-                            alert(message.attachment);
-                        } else {
-                            alert('Error');
-                        }
-                    });
-
-                    this.on("complete", function(file) {
-                        //console.log(arguments);
-                        var img = this;
-
-                        setTimeout(function() {
-                            img.removeFile(file)
-                        }, 2000);
-                    });
+                if (undefined !== url) {
+                    $("#media-manager-image-form").attr('action', url);
                 }
+
+                var dropz = $("form.dropzone").dropzone({
+                    dictDefaultMessage: "{{ trans('back-project::base.file_upload') }}",
+                    acceptedFiles: "image/*",
+                    paramName: 'attachment',
+                    maxFiles: {{ $max_upload_files or "null" }},
+                    maxFileSize: {{config('back-project.attachments.max_file_size')}},
+                    init: function() {
+                        this.on("success", function() {
+                            location.reload();
+                        });
+
+                        this.on("error", function(file, message) {
+                            if (message.attachment) {
+                                alert(message.attachment);
+                            } else {
+                                alert('Error');
+                            }
+                        });
+
+                        this.on("complete", function(file) {
+                            //console.log(arguments);
+                            var img = this;
+
+                            setTimeout(function() {
+                                img.removeFile(file)
+                            }, 2000);
+                        });
+                    }
+                });
             });
+
+
         });
     </script>
 @endpush
