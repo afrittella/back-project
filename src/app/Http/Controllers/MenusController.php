@@ -1,11 +1,11 @@
 <?php
 namespace Afrittella\BackProject\Http\Controllers;
 
-use Afrittella\BackProject\Http\Requests\CategoryEdit;
+use Afrittella\BackProject\Http\Requests\MenuAdd;
+use Afrittella\BackProject\Http\Requests\MenuEdit;
 use Afrittella\BackProject\Repositories\Menus;
 use Afrittella\BackProject\Repositories\Permissions;
 use Illuminate\Http\Request;
-use Afrittella\BackProject\Http\Requests\CategoryAdd;
 use Prologue\Alerts\Facades\Alert;
 
 class MenusController extends Controller
@@ -59,7 +59,7 @@ class MenusController extends Controller
         return back();
     }
 
-    public function store(CategoryAdd $request, Menus $menus, Permissions $permissions)
+    public function store(MenuAdd $request, Menus $menus, Permissions $permissions)
     {
         $menu = $menus->create($request->all());
         $permission = $request->input('permission');
@@ -78,7 +78,7 @@ class MenusController extends Controller
         }
     }
 
-    public function update(CategoryEdit $request, Menus $menus, $id)
+    public function update(MenuEdit $request, Menus $menus, $id)
     {
         $menu = $menus->update($request->all(), $id);
 
