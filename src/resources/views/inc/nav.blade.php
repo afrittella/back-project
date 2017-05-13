@@ -2,10 +2,10 @@
     <ul class="nav navbar-nav">
         <li class="dropdown notifications-menu user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <!--<img src=" {{ Avatar::create(strtoupper($app_user->username))->toBase64() }}" alt="{{  $app_user->username}}"
-                     class="user-image">-->
+
                 &nbsp;{!! @icon('user') !!}
                 {{ $app_user->username }}
+                <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li class="header">

@@ -2,5 +2,4 @@
     @if (isset($icon))
         {!!  icon($icon) !!}
     @endif
-    {{ $slot or "" }}
-</button>
+    {{ $slot or "" }}</button>
