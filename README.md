@@ -11,7 +11,7 @@ Some assets where updated.
 
 Run 
 ```php
-php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public"
+php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public" --force
 ```
  to copy all new files to ```public/vendor/back-project```
  
