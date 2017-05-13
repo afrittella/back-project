@@ -1,4 +1,5 @@
-
+<div class="list-group-item">
+    <div class="row">
         <div class="col-md-2">
             {{ $menu->name }}
         </div>
@@ -54,3 +55,5 @@
             @endcomponent
         </div>
 
+    </div>
+</div>

@@ -27,7 +27,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
+            @if (!empty($menu->parent_id))
+                <a href="{{ route('menus.edit', [$menu->parent_id]) }}">{!! icon('arrow-left') !!} {{ trans('back-project::crud.back') }}</a>
+            @else
+                <a href="{{ route('menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
+            @endif
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.edit'), 'box_icon' => 'pencil'])
                 {!! Form::model($menu, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['menus.update', $menu->id]]) !!}
                 {{ method_field('PUT') }}
@@ -109,15 +113,36 @@
 
             @if ($menu->depth < 2)
                 @component('back-project::components.panel', ['box_title' => trans('back-project::menus.children'), 'box_icon' => 'sitemap', 'box_color' => 'info'])
+                    <h4><i class="fa fa-plus"></i> {{ trans('back-project::crud.new') }}</h4>
+                    @component('back-project::menus.action-add', ['menu' => $menu])
+                    @endcomponent
+                    <hr>
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <small>{{ trans('back-project::menus.name') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <small>{{ trans('back-project::menus.title') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <small>{{ trans('back-project::menus.route') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <small>{{ trans('back-project::menus.icon') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <small>{{ trans('back-project::menus.permission') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <small>{{ trans('back-project::crud.actions') }}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="list-group">
                         @each('back-project::menus.action', $children, 'menu')
                     </div>
-                    @slot('box_footer')
-
-                        @component('back-project::menus.action-add', ['menu' => $menu])
-                        @endcomponent
-                    @endslot
-
                 @endcomponent
             @endif
         </div>
