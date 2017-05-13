@@ -6,45 +6,18 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Afrittella\BackProject\Repositories\Menus as MenuRepository;
 
-class AdminMenuComposer {
+class AdminMenuComposer
+{
 
     protected $menuRepository;
 
     public function __construct(MenuRepository $menuRepository)
     {
-      $this->menuRepository = $menuRepository;
+        $this->menuRepository = $menuRepository;
     }
 
     public function compose(View $view)
     {
-        //@TODO insert in another composer
-        /*$data = $view->getData();
-
-        if (isset($data['menu_action'])) {
-          $menu = $this->menuRepository->findByName($data['menu_action']);
-          if (!empty($menu)) {
-            $view->with('menu_action', $menu->title);
-            $view->with('menu_url', $menu->route);
-            if (empty($data['site_title'])) {
-               $view->with('site_title', $menu->title);
-            }
-            if (empty($data['site_description'])) {
-              $view->with('site_description', $menu->description);
-            }
-          } else {
-            $view->with('site_title', config('app.name'));
-            $view->with('site_description', "");
-            $view->with('menu_action', "");
-            $view->with('menu_url', "");
-          }
-        } else {
-          if (empty($data['site_title'])) {
-            $view->with('site_title', config('app.name'));
-          }
-          if (empty($data['site_description'])) {
-            $view->with('site_description', "");
-          }
-        }*/
         $mainMenu = $this->menuRepository->tree('admin-menu');
         $view->with('mainMenu', $mainMenu);
         $view->with('htmlMenu', $this->menu($mainMenu));
@@ -75,62 +48,69 @@ class AdminMenuComposer {
               </ul>
         ',
 
-        "menu_row" => '
+            "menu_row" => '
           <li class="%s">
             %s
           </li>
         ', // class, link . submenu
 
-        "menu_subrow" => '
+            "menu_caret" => '
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>',
+
+            "menu_subrow" => '
           <ul class="treeview-menu">
             %s
           </ul>
         ',
 
-        "menu_link" => '
-          <a href="%s"><i class="%s text-red"></i><span>%s</span></a>
+            "menu_link" => '
+          <a href="%s"><i class="%s text-red"></i><span>%s</span>%s</a>
         ' // url, icon, title
         ];
+
         $traverse = function ($rows) use (&$traverse, $templates, $user) {
             $menuString = "";
             $hasActive = false;
             foreach ($rows as $menu) {
-              if (!empty($menu->permission) and !$user->hasPermission($menu->permission)) {
-                  continue;
-              }
-
-              $hasActive = false;
-              $link = sprintf($templates['menu_link'],
-                (!empty($menu->route) ? url($menu->route) : '#'),
-                (!empty($menu->icon) ? $menu->icon : 'fa fa-circle-o'),
-                //trans('back-project::base.dashboard')
-                \Lang::has('back-project::menu.'.$menu->title) ? __('back-project::menu.'.$menu->title) : $menu->title
-              );
-
-              $submenu = "";
-              $authorized = true;
-
-              if ($menu->children->count() > 0) {
-                list($submenuString, $hasActive) = $traverse($menu->children);
-                $submenu = "";
-                if (!empty($submenuString)) {
-                    $submenu = sprintf($templates['menu_subrow'], $submenuString);
-                } else {
-                    $authorized = false;
+                if (!empty($menu->permission) and !$user->hasPermission($menu->permission)) {
+                    continue;
                 }
-              }
 
-              $class = (!empty($submenu) ? 'treeview' : '');
-              $current_url = \Route::current()->uri();
+                $hasActive = false;
+                $submenu = "";
+                $authorized = true;
 
-              if ($authorized) {
-                  $menuString .= sprintf($templates['menu_row'], $class, $link.$submenu);
-              }
-        }
+                if ($menu->children->count() > 0) {
+                    list($submenuString, $hasActive) = $traverse($menu->children);
+                    $submenu = "";
+                    if (!empty($submenuString)) {
+                        $submenu = sprintf($templates['menu_subrow'], $submenuString);
+                    } else {
+                        $authorized = false;
+                    }
+                }
 
-        return [
-              $menuString,
-              $hasActive
+                $menu_caret = (!empty($submenu) ? $templates['menu_caret'] : '');
+                $link = sprintf($templates['menu_link'],
+                    (!empty($menu->route) ? url($menu->route) : '#'),
+                    (!empty($menu->icon) ? $menu->icon : 'fa fa-circle-o'),
+                    //trans('back-project::base.dashboard')
+                    \Lang::has('back-project::menu.' . $menu->title) ? __('back-project::menu.' . $menu->title) : $menu->title,
+                    $menu_caret
+                );
+                $class = (!empty($submenu) ? 'treeview' : '');
+                $current_url = \Route::current()->uri();
+
+                if ($authorized) {
+                    $menuString .= sprintf($templates['menu_row'], $class, $link . $submenu);
+                }
+            }
+
+            return [
+                $menuString,
+                $hasActive
             ];
         };
 

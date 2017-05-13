@@ -18,39 +18,14 @@
             {!! Form::text('permission', null, ['class' => 'form-control', 'placeholder' => trans('back-project::menus.permission')]) !!}
         </div>
         @component('back-project::components.generic-button', [
-            'submit' => 'submit',
-            'color' => 'success',
-            'icon' => 'add'
-        ])
+                    'submit' => 'submit',
+                    'color' => 'success',
+                    'icon' => 'add'
+                ])
         @endcomponent
 
         {!! Form::close() !!}
     </div>
 </div>
 
-@push('bottom_scripts')
-<script type="text/javascript">
-$( document ) . ready( function () {
-    var options = {
-      success: onSuccess,
-      error: onError,
-      resetForm: true
-    };
-    $("form.ajax-handled").ajaxForm(options);
-
-    function onSuccess(responseText, statusText, xhr, form) {
-        location.reload();
-    }
-
-    function onError(response) {
-        //console.log(response.responseJSON);
-        if ("" !== response.responseText) {
-            $.each(response.responseJSON, function(i, item) {
-               var field = $("[name="+i+"]");
-               field.parent("div.form-group").addClass('has-error');
-            });
-        }
-    }
-});
-</script>
-@endpush
+@include('back-project::inc.ajax-action-add')

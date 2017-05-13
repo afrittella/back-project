@@ -8,7 +8,7 @@
         </a>
     @endif
     <div class="caption">
-        <p>
+        <p style="overflow: hidden;">
             <strong>{{ $image->original_name }}</strong>
             @if ($image->is_main)
                 {!! @icon('fa-star') !!}

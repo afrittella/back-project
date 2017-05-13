@@ -1,4 +1,15 @@
 # Change Log
+## 1.1
+- Ajax feedback when adding menu actions improved
+- updated fancyBox to version 3.0.47
+- updated jQuery Form Plugin to version 4.2.1
+- minor changes and bug fixes
+
+To update assets run: 
+```php
+php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public"
+```
+
 ## 1.0.4
 - Added Services\SlugGenerator for unique slugs generation. The facade class is automatically added by BackProjectServiceProvider
 - Added Traits\Sluggable for unique slugs generation on Eloquent models.
