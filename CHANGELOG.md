@@ -1,4 +1,8 @@
 # Change Log
+## 1.2
+- Added findWhere and findAllBy on Repository pattern
+- Some refactoring
+
 ## 1.1
 - Ajax feedback when adding menu actions improved
 - updated fancyBox to version 3.0.47
@@ -7,7 +11,7 @@
 
 To update assets run: 
 ```php
-php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public"
+php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public" --force
 ```
 
 ## 1.0.4
