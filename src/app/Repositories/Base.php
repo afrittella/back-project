@@ -11,6 +11,12 @@ use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
+/***
+ * Class Base
+ * Freely inspired by https://github.com/bosnadev/repository
+ * @package Afrittella\BackProject\Repositories
+ */
+
 abstract class Base implements BaseRepository, CriteriaInterface
 {
     private $app;
@@ -101,6 +107,45 @@ abstract class Base implements BaseRepository, CriteriaInterface
         $this->applyCriteria();
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
+
+    public function findAllBy($field, $value, $columns = array('*'))
+    {
+        $this->applyCriteria();
+        return $this->model->where($field, '=', $value)->get($columns);
+    }
+
+    public function findWhere($where, $columns = array('*'), $or = false)
+    {
+        $this->applyCriteria();
+
+        $model = $this->model;
+
+        foreach ($where as $field => $value) {
+            if ($value instanceof \Closure) {
+                $model = (!$or)
+                    ? $model->where($value)
+                    : $model->orWhere($value);
+            } elseif (is_array($value)) {
+                if (count($value) === 3) {
+                    list($field, $operator, $search) = $value;
+                    $model = (!$or)
+                        ? $model->where($field, $operator, $search)
+                        : $model->orWhere($field, $operator, $search);
+                } elseif (count($value) === 2) {
+                    list($field, $search) = $value;
+                    $model = (!$or)
+                        ? $model->where($field, '=', $search)
+                        : $model->orWhere($field, '=', $search);
+                }
+            } else {
+                $model = (!$or)
+                    ? $model->where($field, '=', $value)
+                    : $model->orWhere($field, '=', $value);
+            }
+        }
+        return $model->get($columns);
+    }
+
 
     public function makeModel()
     {
