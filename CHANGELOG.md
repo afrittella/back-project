@@ -7,7 +7,7 @@
 
 To update assets run: 
 ```php
-php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public"
+php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public" --force
 ```
 
 ## 1.0.4

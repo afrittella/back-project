@@ -52,6 +52,22 @@ class UsersTest extends TestCase
         $this->assertEquals($rightUser->id, $user->id);
     }
 
+    public function testCanFindAllBy()
+    {
+        $this->createUsers();
+
+        $this->assertEquals(count($this->users->findAllBy('username', 'afrittella')), 1);
+    }
+
+    public function testCanFindWhere()
+    {
+        $this->createUsers();
+
+        $this->assertEquals(count($this->users->findWhere([
+            ['username', '<>', 'test']
+        ])), 2);
+    }
+
     public function testCanPaginate()
     {
         $this->createMoreUsers(20);
