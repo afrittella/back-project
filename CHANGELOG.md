@@ -1,4 +1,8 @@
 # Change Log
+## 1.2
+- Added findWhere and findAllBy on Repository pattern
+- Some refactoring
+
 ## 1.1
 - Ajax feedback when adding menu actions improved
 - updated fancyBox to version 3.0.47

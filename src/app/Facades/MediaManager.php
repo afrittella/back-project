@@ -6,6 +6,6 @@ class MediaManager extends Facade {
 
     protected static function getFacadeAccessor()
     {
-        return 'attachments-manager';
+        return 'media-manager';
     }
 }

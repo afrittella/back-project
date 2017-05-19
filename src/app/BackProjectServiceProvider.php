@@ -31,7 +31,7 @@ class BackProjectServiceProvider extends ServiceProvider
         'icons'
     ];
 
-    public function boot(\Illuminate\Routing\Router $router)
+    public function boot()
     {
         // LOAD THE VIEWS
         // - first the published views (in case they have any changes)
@@ -46,7 +46,7 @@ class BackProjectServiceProvider extends ServiceProvider
             __DIR__ . '/../config/config.php', 'back-project'
         );
 
-        $this->routes($router);
+        $this->routes();
 
         $this->publishFiles();
 
@@ -62,26 +62,18 @@ class BackProjectServiceProvider extends ServiceProvider
 
     public function register()
     {
-        // register the current package
-        /*$this->app->bind('back-project', function ($app) {
-            return new BackProject($app);
-        });*/
-
-        $this->app->singleton('attachments-manager', function ($app) {
+        $this->app->singleton('media-manager', function ($app) {
             return new MediaManager();
         });
 
-        $this->app->singleton('back-project', function ($app) {
+        // TODO
+        /*$this->app->singleton('back-project', function ($app) {
             return new BackProject();
         });
 
         $this->app->singleton('slug-generator', function ($app) {
             return new SlugGenerator();
-        });
-
-        // @TODO understand the use of contracts
-        //$this->app->singleton(\Afrittella\BackProject\Contracts\FormBuilder::class, \Afrittella\BackProject\FormBuilder::class);
-        //$this->app->singleton('form-builder', \Afrittella\BackProject\FormBuilder::class);
+        });*/
 
         // register dependencies
         $this->app->register(\Prologue\Alerts\AlertsServiceProvider::class);
@@ -128,9 +120,10 @@ class BackProjectServiceProvider extends ServiceProvider
         $this->publishes(['vendor/almasaeed2010/adminlte/plugins' => public_path('vendor/adminlte/plugins')], 'adminlte');
     }
 
-    public function routes(Router $router)
+    public function routes()
     {
         // Register Middleware
+        $router = app('router');
 
         $router->aliasMiddleware('admin', \Afrittella\BackProject\Http\Middleware\Admin::class);
         //$router->aliasMiddleware('guest', \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class);
