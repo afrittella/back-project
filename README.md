@@ -1,21 +1,14 @@
+[![Latest Stable Version](https://poser.pugx.org/afrittella/back-project/v/stable)](https://packagist.org/packages/afrittella/back-project)
+[![Total Downloads](https://poser.pugx.org/afrittella/back-project/downloads)](https://packagist.org/packages/afrittella/back-project)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/afrittella/back-project/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/afrittella/back-project/?branch=master)
 [![StyleCI](https://styleci.io/repos/84803631/shield?branch=master)](https://styleci.io/repos/84803631)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
+[![License](https://poser.pugx.org/afrittella/back-project/license)](https://packagist.org/packages/afrittella/back-project)
 
-# Back Project 1.2
+# Back Project 1.2.1
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
-
-### New in 1.1
-Some assets where updated.
-
-Run 
-```php
-php artisan vendor:publish --provider="Afrittella\BackProject\BackProjectServiceProvider" --tag="public" --force
-```
- to copy all new files to ```public/vendor/back-project```
  
- See [CHANGELOG.md](https://github.com/afrittella/back-project/blob/master/CHANGELOG.md) for details.
+See [CHANGELOG.md](https://github.com/afrittella/back-project/blob/master/CHANGELOG.md) for updates.
  
 ### Features
 - AdminLTE template

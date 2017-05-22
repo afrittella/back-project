@@ -1,4 +1,10 @@
 # Change Log
+## 1.2.1
+- Minor changes and some refactoring
+- Added related models view to Attachments
+- Fixed an Attachment bug. Now, 'attachables' records are deleted when deleting related model 
+- [README.md](https://github.com/afrittella/back-project/blob/master/README.md) updated
+
 ## 1.2
 - Added findWhere and findAllBy on Repository pattern
 - Some refactoring

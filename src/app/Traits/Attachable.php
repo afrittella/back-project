@@ -6,6 +6,16 @@ use Illuminate\Support\Facades\Auth;
 trait Attachable
 {
 
+    public static function boot()
+    {
+        parent::boot();
+
+        // When we delete a model, are deleted also 'attachables' records
+        static::deleting(function($model) {
+            $model->attachments()->sync([]);
+        });
+    }
+
     public function addAttachment($data = [])
     {
         $user = Auth::user();

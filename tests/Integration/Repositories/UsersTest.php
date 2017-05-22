@@ -6,8 +6,6 @@ use Afrittella\BackProject\Repositories\Users;
 
 use Tests\TestCase;
 use Tests\Integration\Repositories\Support\EntitiesHelper;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Collection;
 
 
 class UsersTest extends TestCase
