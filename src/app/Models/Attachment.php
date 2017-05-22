@@ -9,6 +9,11 @@ class Attachment extends Model
     protected $fillable = ['name', 'original_name', 'description', 'user_id', 'is_main'];
     //protected $dates = ['deleted_at'];
 
+    public function attachables()
+    {
+        return $this->hasMany('Afrittella\BackProject\Models\Attachable');
+    }
+
     public function user()
     {
         return $this->belongsTo(config('back-project.user_model'));

@@ -71,6 +71,7 @@
               <br>
               <a href="{{url('login') }}">{{ trans('back-project::base.already_registered') }}</a>
             </div>
+          </div>
       </form>
     </div>
 <!-- /.form-box -->

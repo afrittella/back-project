@@ -126,7 +126,6 @@ class BackProjectServiceProvider extends ServiceProvider
         $router = app('router');
 
         $router->aliasMiddleware('admin', \Afrittella\BackProject\Http\Middleware\Admin::class);
-        //$router->aliasMiddleware('guest', \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class);
         $router->aliasMiddleware('role', \Afrittella\BackProject\Http\Middleware\Role::class);
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');

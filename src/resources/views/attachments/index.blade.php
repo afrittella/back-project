@@ -46,6 +46,15 @@
                                     'image' => $attachment,
                                     'fancybox' => true
                                 ])
+
+                                    @if (!empty($attachment->attachables))
+                                        @foreach($attachment->attachables as $attachable)
+                                        <p>{!! @icon('link') !!}
+                                            <strong>{{  class_basename($attachable->attachable_type) }}</strong>
+                                        </p>
+                                        @endforeach
+                                    @endif
+
                                     @if(!$attachment->is_main)
                                         @component('back-project::components.generic-button-link', [
                                             'url' => route('attachments.main', [$attachment->id]),
@@ -76,12 +85,13 @@
                                     ])
                                         {{ trans('back-project::crud.delete') }}
                                     @endcomponent
+
                                 @endcomponent
                             </div>
                             @if (($loop->index + 1) % 4 == 0)
-                                </div>
-                                <div class="row">
-                            @endif
+                    </div>
+                    <div class="row">
+                        @endif
                         @endforeach
                     </div>
                 @endif
