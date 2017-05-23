@@ -70,7 +70,7 @@ login-page
                 <div class="row">
                     <div class="col-xs-12">
                         <br>
-                        <a href="{{ route('social_login', ['facebook']) }}" class="btn btn-block btn-flat btn-social btn-facebook">
+                        <a href="{{ route('bp.social_login', ['facebook']) }}" class="btn btn-block btn-flat btn-social btn-facebook">
                             {!! @icon('facebook') !!} {{ trans('back-project::base.facebook_login') }}
                         </a>
                     </div>
@@ -81,7 +81,7 @@ login-page
                 <div class="row">
                     <div class="col-xs-12">
                         <br>
-                        <a href="{{ route('social_login', ['twitter']) }}" class="btn btn-block btn-flat btn-social btn-twitter">
+                        <a href="{{ route('bp.social_login', ['twitter']) }}" class="btn btn-block btn-flat btn-social btn-twitter">
                             {!! @icon('twitter') !!} {{ trans('back-project::base.twitter_login') }}
                         </a>
                     </div>
@@ -92,7 +92,7 @@ login-page
                 <div class="row">
                     <div class="col-xs-12">
                         <br>
-                        <a href="{{ route('social_login', ['linkedin']) }}" class="btn btn-block btn-flat btn-social btn-linkedin">
+                        <a href="{{ route('bp.social_login', ['linkedin']) }}" class="btn btn-block btn-flat btn-social btn-linkedin">
                             {!! @icon('linkedin') !!} {{ trans('back-project::base.linkedin_login') }}
                         </a>
                     </div>

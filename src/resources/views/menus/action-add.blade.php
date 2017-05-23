@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        {!! Form::open(['route' => ['menus.store'], 'method' => 'post', 'class' => 'form-inline ajax-handled']) !!}
+        {!! Form::open(['route' => ['bp.menus.store'], 'method' => 'post', 'class' => 'form-inline ajax-handled']) !!}
         {!! Form::hidden('parent_id', $menu->id) !!}
         <div class="form-group {{ $errors->menuAction->has('name') ? ' has-error' : '' }}">
             {!! Form::text('name', null, ['class' => 'form-control', 'required' => true, 'placeholder' => trans('back-project::menus.name').' (*)']) !!}

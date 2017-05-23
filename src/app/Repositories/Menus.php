@@ -1,6 +1,8 @@
 <?php
 namespace Afrittella\BackProject\Repositories;
 
+use Afrittella\BackProject\Contracts\BaseRepository;
+
 class Menus extends Base
 {
     function model()
@@ -24,9 +26,6 @@ class Menus extends Base
         return $this->model->withDepth()->find($id, $columns);
     }
 
-    /**
-     * @param string $name
-     */
     public function tree($name)
     {
         $root = $this->findBy('name', $name);
@@ -71,12 +70,12 @@ class Menus extends Base
         $body = [];
 
         foreach ($data as $row):
-            $actions = [
-                'edit' => ['url' => route('menus.edit', [$row->id])]
+            $actions =[
+                'edit' => ['url' => route('bp.menus.edit', [$row->id])]
             ];
 
             if (!$row->is_protected) {
-                $actions['delete'] = ['url' => route('menus.delete', [$row->id])];
+                $actions['delete'] = ['url' => route('bp.menus.delete', [$row->id])];
             }
 
             $body[] = [

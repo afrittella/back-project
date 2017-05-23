@@ -18,14 +18,14 @@
                 <li>
                     <ul class="menu">
                         <li>
-                            <a href="{{ route('admin.dashboard') }}">
+                            <a href="{{ route('bp.admin.dashboard') }}">
                                 {!! @icon('dashboard') !!}
                                 {{ trans('back-project::base.dashboard') }}
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('admin.account') }}">
+                            <a href="{{ route('bp.admin.account') }}">
                                 {!! @icon('user') !!}
                                 {{ trans('back-project::base.account') }}
                             </a>

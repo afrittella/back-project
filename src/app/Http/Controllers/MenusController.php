@@ -74,7 +74,7 @@ class MenusController extends Controller
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json();
         } else {
-            return redirect(route('menus.index'));
+            return redirect(route('bp.menus.index'));
         }
     }
 

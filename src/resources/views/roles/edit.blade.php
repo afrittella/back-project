@@ -5,12 +5,12 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
             [
-                'url' => route('roles.index'),
+                'url' => route('bp.roles.index'),
                 'title' => trans('back-project::menu.Roles'),
                 'icon' => 'users'
             ],
@@ -27,9 +27,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-push-2">
-            <a href="{{ route('roles.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Roles') }}</a>
+            <a href="{{ route('bp.roles.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Roles') }}</a>
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.edit'), 'box_icon' => 'pencil'])
-                {!! Form::model($role, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['roles.update', $role->id]]) !!}
+                {!! Form::model($role, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['bp.roles.update', $role->id]]) !!}
                 {{ method_field('PUT') }}
                 @include('back-project::components.forms.text', [
                     'name' => 'name',

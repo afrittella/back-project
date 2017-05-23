@@ -54,7 +54,7 @@
 
             </small>
             <br>
-            <a href="{{  route('admin.dashboard') }}">Home</a>
+            <a href="{{  route('bp.admin.dashboard') }}">Home</a>
         </div>
     </div>
 </div>

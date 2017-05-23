@@ -2,7 +2,9 @@
 
 namespace Afrittella\BackProject\Repositories;
 
+use Afrittella\BackProject\Contracts\BaseRepository;
 use Afrittella\BackProject\Models\SocialAccount;
+use Kalnoy\Nestedset\QueryBuilder;
 use Laravel\Socialite\Contracts\User as SocialProvider;
 
 class Users extends Base
@@ -95,12 +97,9 @@ class Users extends Base
         }
     }
 
-    /**
-     * @param string $name
-     */
     public function getUniqueUsername($name)
     {
-        $nrRand = rand(0, 100);
+        $nrRand = rand(0,100);
 
         return $name.$nrRand;
     }
@@ -134,14 +133,14 @@ class Users extends Base
         foreach ($data as $row):
             $body[] = [
                 'columns' => [
-                    ['content' => '<img src="'.\Avatar::create(strtoupper($row->username))->toBase64().'" alt="'.$row->username.' width="40px" height="40px"> '],
+                    ['content' => '<img src="' . \Avatar::create(strtoupper($row->username))->toBase64() . '" alt="' . $row->username . ' width="40px" height="40px"> '],
                     //['content' => false, 'action' => false, 'icon' => ($row->isConfirmed() ? "check" : 'times')],
                     ['content' => $row->username],
                     ['content' => $row->email],
                     ['content' => implode(',', $row->roles()->pluck('name')->toArray())],
                     ['content' => false, 'actions' => [
-                        'edit' => ['url' => route('users.edit', [$row['id']])], //url('/admin/users/edit', [$row['id']])],
-                        'delete' => ['url' => route('users.delete', [$row['id']])]
+                        'edit' => ['url' => route('bp.users.edit', [$row['id']])], //url('/admin/users/edit', [$row['id']])],
+                        'delete' => ['url' => route('bp.users.delete', [$row['id']])]
                     ]
                     ],
                 ]

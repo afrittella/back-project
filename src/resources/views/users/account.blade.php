@@ -5,7 +5,7 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-8 col-md-push-2">
             @component('back-project::components.panel', ['box_title' => ($user->is_social ? trans('back-project::base.account_create') : trans('back-project::crud.edit')), 'box_icon' => 'pencil'])
-                {!! Form::model($user, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ($user->is_social ? ['admin.add-account'] : ['admin.edit-account']) ]) !!}
+                {!! Form::model($user, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ($user->is_social ? ['bp.admin.add-account'] : ['bp.admin.edit-account']) ]) !!}
                 {{ method_field(($user->is_social ? 'PUT' : 'POST')) }}
                 @include('back-project::components.forms.text', [
                     'name' => 'username',

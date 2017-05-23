@@ -5,7 +5,7 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
@@ -57,7 +57,7 @@
 
                                     @if(!$attachment->is_main)
                                         @component('back-project::components.generic-button-link', [
-                                            'url' => route('attachments.main', [$attachment->id]),
+                                            'url' => route('bp.attachments.main', [$attachment->id]),
                                             'action' => 'main',
                                             'class' => 'sm',
                                             'color' => 'success',
@@ -67,7 +67,7 @@
                                     @endif
 
                                     @component('back-project::components.generic-button-link', [
-                                        'url' => route('attachments.edit', [$attachment->id]),
+                                        'url' => route('bp.attachments.edit', [$attachment->id]),
                                         'action' => 'edit',
                                         'class' => 'sm',
                                         'color' => 'default',
@@ -77,7 +77,7 @@
                                     @endcomponent
 
                                     @component('back-project::components.generic-button-link', [
-                                        'url' => route('attachments.delete', [$attachment->id]),
+                                        'url' => route('bp.attachments.delete', [$attachment->id]),
                                         'action' => 'delete',
                                         'class' => 'sm',
                                         'color' => 'default',
@@ -97,7 +97,7 @@
                 @endif
                 @include('back-project::components.upload-window', [
                     'title' => trans('back-project::media.upload_window_title'),
-                    'url' => route('attachments.store')
+                    'url' => route('bp.attachments.store')
                     ])
             @endcomponent
         </div>

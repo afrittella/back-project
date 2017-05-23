@@ -3,11 +3,13 @@
 namespace Afrittella\BackProject\Http\Controllers;
 
 use Afrittella\BackProject\Http\Requests\AccountStore;
+use Afrittella\BackProject\Http\Requests\AccountEdit;
 use Afrittella\BackProject\Repositories\Users;
 use Afrittella\BackProject\Repositories\Roles;
 use Afrittella\BackProject\Http\Requests\UserAdd;
 use Afrittella\BackProject\Http\Requests\UserEdit;
 use Afrittella\BackProject\Events\UserRegistered as Registered;
+use Illuminate\Http\Request;
 use Prologue\Alerts\Facades\Alert;
 use Auth;
 
@@ -46,7 +48,7 @@ class UsersController extends Controller
 
         Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project::users.user')]))->flash();
 
-        return redirect(route('users.index'));
+        return redirect(route('bp.users.index'));
     }
 
     public function create(Roles $roles)
@@ -64,7 +66,7 @@ class UsersController extends Controller
 
         Alert::add('success', trans('back-project::crud.model_created', ['model' => trans('back-project::users.user')]))->flash();
 
-        return redirect(route('users.index'));
+        return redirect(route('bp.users.index'));
     }
 
     public function accountStore(AccountStore $request, Users $users)
@@ -87,7 +89,7 @@ class UsersController extends Controller
         }
 
 
-        return redirect(route('admin.dashboard'));
+        return redirect(route('bp.admin.dashboard'));
     }
 
     public function delete(Users $users, $id)

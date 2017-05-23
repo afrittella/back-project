@@ -17,7 +17,7 @@ class SocialLoginController
         try {
             $user = Socialite::driver($provider)->user();
         } catch (Exception $e) {
-            return redirect(route('social_login', [$provider]));
+            return redirect(route('bp.social_login', [$provider]));
         }
 
         $authUser = $users->createOrGetFromSocial($user, $provider);

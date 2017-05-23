@@ -5,12 +5,12 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
             [
-                'url' => route('menus.index'),
+                'url' => route('bp.menus.index'),
                 'title' => trans('back-project::menu.Menus'),
                 'icon' => 'ellipsis-v'
             ],
@@ -27,9 +27,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-push-2">
-            <a href="{{ route('menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
+            <a href="{{ route('bp.menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.new'), 'box_icon' => 'plus'])
-                {!! Form::open(['class' => 'form-horizontal', 'method' => 'post', 'route' => 'menus.store']) !!}
+                {!! Form::open(['class' => 'form-horizontal', 'method' => 'post', 'route' => 'bp.menus.store']) !!}
 
                 @include('back-project::components.forms.text', [
                     'name' => 'name',

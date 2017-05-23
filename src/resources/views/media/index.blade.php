@@ -5,7 +5,7 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
@@ -40,7 +40,7 @@
                                 ])
 
                                     @component('back-project::components.generic-button-link', [
-                                        'url' => route('media.edit', [$attachment->id]),
+                                        'url' => route('bp.media.edit', [$attachment->id]),
                                         'action' => 'edit',
                                         'class' => 'sm',
                                         'color' => 'default',
@@ -50,7 +50,7 @@
                                     @endcomponent
 
                                     @component('back-project::components.generic-button-link', [
-                                        'url' => route('media.delete', [$attachment->id]),
+                                        'url' => route('bp.media.delete', [$attachment->id]),
                                         'action' => 'delete',
                                         'class' => 'sm',
                                         'color' => 'default',

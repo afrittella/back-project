@@ -23,7 +23,7 @@
         <div class="col-md-2">
             @component('back-project::components.generic-button-link', [
                 'icon' => 'edit',
-                'url' => route('menus.edit', $menu->id),
+                'url' => route('bp.menus.edit', $menu->id),
                 'color' => 'default',
                 'class' => 'xs'
             ])
@@ -31,7 +31,7 @@
 
             @component('back-project::components.generic-button-link', [
                 'icon' => 'delete',
-                'url' => route('menus.delete', $menu->id),
+                'url' => route('bp.menus.delete', $menu->id),
                 'color' => 'danger',
                 'action' => 'delete',
                 'class' => 'xs'
@@ -40,7 +40,7 @@
 
             @component('back-project::components.generic-button-link', [
                 'icon' => 'up',
-                'url' => route('menus.up', $menu->id),
+                'url' => route('bp.menus.up', $menu->id),
                 'color' => 'primary',
                 'class' => 'xs'
             ])
@@ -48,7 +48,7 @@
 
             @component('back-project::components.generic-button-link', [
                 'icon' => 'down',
-                'url' => route('menus.down', $menu->id),
+                'url' => route('bp.menus.down', $menu->id),
                 'color' => 'primary',
                 'class' => 'xs'
             ])

@@ -6,6 +6,7 @@ use Afrittella\BackProject\Http\Requests\PermissionAdd;
 use Afrittella\BackProject\Http\Requests\PermissionEdit;
 use Afrittella\BackProject\Repositories\Permissions;
 use Afrittella\BackProject\Repositories\Roles;
+use Illuminate\Http\Request;
 use Prologue\Alerts\Facades\Alert;
 
 class PermissionsController extends Controller
@@ -31,7 +32,7 @@ class PermissionsController extends Controller
 
         Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project::permissions.permission')]))->flash();
 
-        return redirect(route('permissions.index'));
+        return redirect(route('bp.permissions.index'));
     }
 
     public function create(Permissions $permissions, Roles $roles)
@@ -41,11 +42,11 @@ class PermissionsController extends Controller
 
     public function store(PermissionAdd $request, Permissions $permissions)
     {
-        $permission = $permissions->create($request->all());
+        $permission= $permissions->create($request->all());
 
         Alert::add('success', trans('back-project::crud.model_created', ['model' => trans('back-project::permissions.permission')]))->flash();
 
-        return redirect(route('permissions.index'));
+        return redirect(route('bp.permissions.index'));
     }
 
     public function delete(Permissions $permissions, $id)

@@ -5,12 +5,12 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
             [
-                'url' => route('attachments.index'),
+                'url' => route('bp.attachments.index'),
                 'title' => trans('back-project::menu.My Media'),
                 'icon' => 'user-circle-o'
             ],
@@ -27,9 +27,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-9 col-md-push-1">
-            <a href="{{ route('attachments.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.My Media') }}</a>
+            <a href="{{ route('bp.attachments.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.My Media') }}</a>
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.edit'), 'box_icon' => 'pencil'])
-                {!! Form::model($attachment, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['attachments.update', $attachment->id]]) !!}
+                {!! Form::model($attachment, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['bp.attachments.update', $attachment->id]]) !!}
                 {{ method_field('PUT') }}
                 <div class="row">
                     <div class="col-md-4">

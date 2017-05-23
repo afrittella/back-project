@@ -5,12 +5,12 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
             [
-                'url' => route('menus.index'),
+                'url' => route('bp.menus.index'),
                 'title' => trans('back-project::menu.Menus'),
                 'icon' => 'ellipsis-v'
             ],
@@ -28,12 +28,12 @@
     <div class="row">
         <div class="col-md-12">
             @if (!empty($menu->parent_id))
-                <a href="{{ route('menus.edit', [$menu->parent_id]) }}">{!! icon('arrow-left') !!} {{ trans('back-project::crud.back') }}</a>
+                <a href="{{ route('bp.menus.edit', [$menu->parent_id]) }}">{!! icon('arrow-left') !!} {{ trans('back-project::crud.back') }}</a>
             @else
-                <a href="{{ route('menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
+                <a href="{{ route('bp.menus.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Menus') }}</a>
             @endif
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.edit'), 'box_icon' => 'pencil'])
-                {!! Form::model($menu, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['menus.update', $menu->id]]) !!}
+                {!! Form::model($menu, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['bp.menus.update', $menu->id]]) !!}
                 {{ method_field('PUT') }}
 
                 @include('back-project::components.forms.text', [

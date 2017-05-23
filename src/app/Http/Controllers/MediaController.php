@@ -2,10 +2,13 @@
 
 namespace Afrittella\BackProject\Http\Controllers;
 
+use Afrittella\BackProject\Facades\MediaManager;
 use Afrittella\BackProject\Repositories\Attachments;
 use Afrittella\BackProject\Repositories\Criteria\Attachments\All;
+use Afrittella\BackProject\Repositories\Criteria\Attachments\ByUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Prologue\Alerts\Facades\Alert;
 
 class MediaController extends Controller
@@ -48,7 +51,7 @@ class MediaController extends Controller
 
         Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project::media.image')]))->flash();
 
-        return redirect(route('media.index'));
+        return redirect(route('bp.media.index'));
     }
 
     public function delete(Attachments $attachments, $id)

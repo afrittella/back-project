@@ -5,12 +5,12 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
             [
-                'url' => route('users.index'),
+                'url' => route('bp.users.index'),
                 'title' => trans('back-project::menu.Users'),
                 'icon' => 'users'
             ],
@@ -27,9 +27,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-push-2">
-            <a href="{{ route('users.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Users') }}</a>
+            <a href="{{ route('bp.users.index') }}">{!! icon('arrow-left') !!} {{ trans('back-project::menu.Users') }}</a>
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.new'), 'box_icon' => 'plus'])
-                {!! Form::open(['class' => 'form-horizontal', 'method' => 'post', 'route' => 'users.store']) !!}
+                {!! Form::open(['class' => 'form-horizontal', 'method' => 'post', 'route' => 'bp.users.store']) !!}
 
                 @include('back-project::components.forms.text', [
                     'name' => 'username',

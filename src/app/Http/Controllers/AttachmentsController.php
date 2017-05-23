@@ -64,7 +64,7 @@ class AttachmentsController extends Controller
 
         Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project::media.image')]))->flash();
 
-        return redirect(route('attachments.index'));
+        return redirect(route('bp.attachments.index'));
     }
 
     public function delete(Attachments $attachments, $id)
@@ -94,6 +94,6 @@ class AttachmentsController extends Controller
 
         Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project::media.image')]))->flash();
 
-        return redirect(route('attachments.index'));
+        return redirect(route('bp.attachments.index'));
     }
 }

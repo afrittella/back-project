@@ -1,6 +1,8 @@
 <?php
 namespace Afrittella\BackProject\Repositories;
 
+use Afrittella\BackProject\Contracts\BaseRepository;
+
 class Permissions extends Base
 {
     public function model()
@@ -68,12 +70,12 @@ class Permissions extends Base
         $body = [];
 
         foreach ($data as $row):
-            $actions = [];
+            $actions =[];
 
             if ($row->name !== 'administration' and $row->name !== 'backend') {
                 $actions = [
-                    'edit' => ['url' => route('permissions.edit', [$row['id']])],
-                    'delete' => ['url' => route('permissions.delete', [$row['id']])]
+                    'edit' => ['url' => route('bp.permissions.edit', [$row['id']])],
+                    'delete' => ['url' => route('bp.permissions.delete', [$row['id']])]
                 ];
             }
 

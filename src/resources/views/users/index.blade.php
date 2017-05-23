@@ -5,7 +5,7 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
@@ -25,7 +25,7 @@
         <div class="col-md-12">
             @component('back-project::components.panel', ['box_title' => trans('back-project::crud.list'), 'box_icon' => 'list'])
                 @slot('box_right')
-                    @component('back-project::components.generic-button-link', ['color' => 'default bg-purple', 'action' => 'add', 'icon' => 'add', 'class' => 'sm', 'url' => route('users.create')])
+                    @component('back-project::components.generic-button-link', ['color' => 'default bg-purple', 'action' => 'add', 'icon' => 'add', 'class' => 'sm', 'url' => route('bp.users.create')])
                         {{ trans('back-project::crud.new') }}
                     @endcomponent
                 @endslot
