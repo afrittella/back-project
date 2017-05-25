@@ -5,10 +5,11 @@
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
 [![License](https://poser.pugx.org/afrittella/back-project/license)](https://packagist.org/packages/afrittella/back-project)
 
-# Back Project 1.2.1
+# Back Project 1.3.1
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
 
 ##New in 1.3
+
 This release had a massive routes refactoring, so please pay attention after updating the package.
 
 If you copied and edited Back Project views, you should edit all routes except for login/logout/register ones provided by Laravel, adding bp before route name (example: bp.users.add).
