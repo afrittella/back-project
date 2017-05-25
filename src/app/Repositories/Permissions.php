@@ -1,8 +1,6 @@
 <?php
 namespace Afrittella\BackProject\Repositories;
 
-use Afrittella\BackProject\Contracts\BaseRepository;
-
 class Permissions extends Base
 {
     public function model()
@@ -70,7 +68,7 @@ class Permissions extends Base
         $body = [];
 
         foreach ($data as $row):
-            $actions =[];
+            $actions = [];
 
             if ($row->name !== 'administration' and $row->name !== 'backend') {
                 $actions = [
