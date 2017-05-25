@@ -3,13 +3,11 @@
 namespace Afrittella\BackProject\Http\Controllers;
 
 use Afrittella\BackProject\Http\Requests\AccountStore;
-use Afrittella\BackProject\Http\Requests\AccountEdit;
 use Afrittella\BackProject\Repositories\Users;
 use Afrittella\BackProject\Repositories\Roles;
 use Afrittella\BackProject\Http\Requests\UserAdd;
 use Afrittella\BackProject\Http\Requests\UserEdit;
 use Afrittella\BackProject\Events\UserRegistered as Registered;
-use Illuminate\Http\Request;
 use Prologue\Alerts\Facades\Alert;
 use Auth;
 

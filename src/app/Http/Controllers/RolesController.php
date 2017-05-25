@@ -6,7 +6,6 @@ use Afrittella\BackProject\Http\Requests\RoleAdd;
 use Afrittella\BackProject\Http\Requests\RoleEdit;
 use Afrittella\BackProject\Repositories\Permissions;
 use Afrittella\BackProject\Repositories\Roles;
-use Illuminate\Http\Request;
 use Prologue\Alerts\Facades\Alert;
 
 class RolesController extends Controller
@@ -37,12 +36,12 @@ class RolesController extends Controller
 
     public function create(Permissions $permissions)
     {
-        return view('back-project::roles.create')->with('permissions',  $permissions->all());
+        return view('back-project::roles.create')->with('permissions', $permissions->all());
     }
 
     public function store(RoleAdd $request, Roles $roles)
     {
-        $role= $roles->create($request->all());
+        $role = $roles->create($request->all());
 
         Alert::add('success', trans('back-project::crud.model_created', ['model' => trans('back-project::roles.role')]))->flash();
 
