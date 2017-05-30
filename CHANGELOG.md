@@ -1,4 +1,20 @@
 # Change Log
+
+## 1.3.2
+
+Middleware "admin" and "role" are now not included by default in Back Project. You should insert them in Kernel.php. Then Kernel.php should look like this:
+
+```php
+...
+protected $routeMiddleware = [
+        ...
+        'guest' => \Afrittella\BackProject\Http\Middleware\RedirectIfAuthenticated::class,        
+        'admin' => \Afrittella\BackProject\Http\Middleware\Admin::class,
+        'role' => \Afrittella\BackProject\Http\Middleware\Role::class,
+    ];
+...
+```
+
 ## 1.3
 This release had a massive routes refactoring, so please pay attention after updating the package.
 
