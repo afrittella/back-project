@@ -131,7 +131,6 @@ class SeedDefaultMenus extends Command
                 $permission = Permission::firstOrCreate(['name' => $menu->permission]);
 
                 if (!$role->hasPermissionTo($menu->permission)) {
-
                     $role->givePermissionTo($menu->permission);
                 }
 
