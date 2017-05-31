@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.3
+- 'use_custom_auth_routes' added in config.php. Now you can use your routes for login/logout/register (or simply add manually ``` Route::auth()``` in your routes)
+- fixed some typos on error views. You should publish again if you published before this update.
+
 ## 1.3.2
 
 Middleware "admin" and "role" are now not included by default in Back Project. You should insert them in Kernel.php. Then Kernel.php should look like this:
