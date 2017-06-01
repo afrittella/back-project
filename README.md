@@ -5,12 +5,8 @@
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
 [![License](https://poser.pugx.org/afrittella/back-project/license)](https://packagist.org/packages/afrittella/back-project)
 
-# Back Project 1.3.3
+# Back Project 1.3.4
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
-
-### New in 1.3.3
-- 'use_custom_auth_routes' added in config.php. If ```true``` you can use your custom routes for login/logout/register/password recovery (or simply add manually ``` Route::auth()``` in your routes).
-- fixed some typos on error views. You should publish again if you published before this update.
 
 See [CHANGELOG.md](https://github.com/afrittella/back-project/blob/master/CHANGELOG.md) for detailed updates.
  
