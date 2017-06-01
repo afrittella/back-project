@@ -2,7 +2,7 @@
 
 ## 1.3.4
 - ```use_custom_auth_routes``` must be ```false```
-- fixed relative url in cached images
+- fixed url in cached images
 
 ## 1.3.3
 - 'use_custom_auth_routes' added in config.php. Now you can use your routes for login/logout/register (or simply add manually ``` Route::auth()``` in your routes)
