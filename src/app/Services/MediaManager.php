@@ -44,7 +44,7 @@ class MediaManager {
     {
         $format = $this->chooseFormat($format);
 
-        return '/'.config('imagecache.route').'/'.$format.'/'.$name;
+        return url('/'.config('imagecache.route').'/'.$format.'/'.$name);
     }
 
     public function getCachedImageTag($format, $image, $attributes = "")
