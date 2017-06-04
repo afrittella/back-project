@@ -16,16 +16,20 @@ trait Attachable
         });
     }
 
-    public function addAttachment($data = [])
+    public function addAttachment($data = [], $user_id = null)
     {
-        $user = Auth::user();
+        if (empty($user_id)) {
+            if ($user = Auth::user()) {
+                $user_id = $user->id;
+            }
+        }
 
         // If morphOne attachment, and one attachment is present, we must delete it
         if (!$this->multi and $this->hasAttachments()) {
             $this->deleteAttachment($this->getAttachment());
         }
 
-        return $this->attachments()->create(array_merge($data, ['user_id' => $user->id]));
+        return $this->attachments()->create(array_merge($data, ['user_id' => $user_id]));
 
         //return $attachment->save();
     }
