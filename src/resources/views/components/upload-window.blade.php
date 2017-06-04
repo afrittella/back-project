@@ -23,8 +23,9 @@
 @push('bottom_scripts')
     <script src="{{ asset('vendor/back-project') }}/js/dropzone.min.js"></script>
     <script type="text/javascript">
+        Dropzone.autoDiscover = false;
+
         $( document ).ready(function() {
-            Dropzone.autoDiscover = false;
 
             $('#media-manager-single-upload').on('show.bs.modal', function(e) {
                 var url = $(e.relatedTarget).data('url');
