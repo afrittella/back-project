@@ -30,8 +30,6 @@ trait Attachable
         }
 
         return $this->attachments()->create(array_merge($data, ['user_id' => $user_id]));
-
-        //return $attachment->save();
     }
 
     public function deleteAttachment(Attachment $attachment)
