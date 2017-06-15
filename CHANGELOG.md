@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.3.6
+- fixed a javascript error on media uploader with multiple instances of DropzoneJs
+
 ## 1.3.5
 - fixed a javascript error on media uploader with dropzonejs
 - Traits/Attachable. Fixed an error when passing custom user_id

@@ -5,7 +5,8 @@
 [![Build Status](https://travis-ci.org/afrittella/back-project.svg?branch=master)](https://travis-ci.org/afrittella/back-project)
 [![License](https://poser.pugx.org/afrittella/back-project/license)](https://packagist.org/packages/afrittella/back-project)
 
-# Back Project 1.3.5
+# Back Project 1.3.6
+
 Back Project is an admin panel for Laravel 5.4+ based on [AdminLTE](https://github.com/almasaeed2010/AdminLTE) and other amazing packages. See [Credits](#credits) for details.
 
 See [CHANGELOG.md](https://github.com/afrittella/back-project/blob/master/CHANGELOG.md) for detailed updates.
