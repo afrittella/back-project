@@ -48,4 +48,11 @@
       "Tests\\": "tests/"
     }
   }
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Afrittella\\BackProject\\BackProjectServiceProvider"
+      ],
+    }
+  }  
 }
