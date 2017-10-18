@@ -52,7 +52,7 @@
     "laravel": {
       "providers": [
         "Afrittella\\BackProject\\BackProjectServiceProvider"
-      ],
+      ]
     }
   }  
 }
