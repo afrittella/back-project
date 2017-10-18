@@ -115,7 +115,7 @@ class BackProjectServiceProvider extends ServiceProvider
         // publish error views
         $this->publishes([__DIR__ . '/../resources/error_views' => resource_path('views/errors')], 'errors');
         // publish public AdminLTE assets
-        $this->publishes(['vendor/almasaeed2010/adminlte/bootstrap' => public_path('vendor/adminlte/bootstrap')], 'adminlte');
+        $this->publishes(['vendor/almasaeed2010/adminlte/bower_components' => public_path('vendor/adminlte/bower_components')], 'adminlte');
         $this->publishes(['vendor/almasaeed2010/adminlte/dist' => public_path('vendor/adminlte/dist')], 'adminlte');
         $this->publishes(['vendor/almasaeed2010/adminlte/plugins' => public_path('vendor/adminlte/plugins')], 'adminlte');
     }

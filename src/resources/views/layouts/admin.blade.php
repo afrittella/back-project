@@ -76,9 +76,9 @@
 <!-- Bootstrap 3.3.5 -->
 <script src="{{ asset('vendor/adminlte') }}/bootstrap/js/bootstrap.min.js"></script>
 <script src="{{ asset('vendor/adminlte') }}/plugins/pace/pace.min.js"></script>
-<script src="{{ asset('vendor/adminlte') }}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="{{ asset('vendor/adminlte') }}/plugins/fastclick/fastclick.js"></script>
-<script src="{{ asset('vendor/adminlte') }}/dist/js/app.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
 <script src="{{ asset('vendor/back-project') }}/js/jquery.form.min.js"></script>
 <script src="{{ asset('vendor/back-project') }}/js/admin.js"></script>
 
