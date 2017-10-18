@@ -7,7 +7,7 @@ login-page
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="/">{{config('app.name') }}</a>
+            <a href="{{config('app.url')}}">{{config('app.name') }}</a>
         </div>
         <!-- /.login-logo -->
 
