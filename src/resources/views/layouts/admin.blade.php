@@ -53,7 +53,7 @@
 
 <!-- main-menu -->
 @include('back-project::inc.sidebar')
-<!-- /main-menu
+<!-- /main-menu -->
 
     <!-- content -->
     <div class="content-wrapper">
