@@ -1,3 +1,11 @@
+<?php
+if (!is_object($app_user))
+{
+    $app_user = new stdclass();
+    $app_user->username = 'Anonymous';
+    $app_user->email = null;
+}
+?>
 <div class="navbar-custom-menu">
     <ul class="nav navbar-nav">
         <li class="dropdown notifications-menu user user-menu">
@@ -48,4 +56,3 @@
         </li>
     </ul>
 </div>
-
