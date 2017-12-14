@@ -13,7 +13,7 @@
     <div class="register-box-body">
       <p class="login-box-msg">{{ trans('back-project::base.register') }}</p>
 
-      <form class="form-horizontal" role="form" method="POST" action="{{ url('register') }}">
+      <form role="form" method="POST" action="{{ url('register') }}">
           {{ csrf_field() }}
 
           <div class="form-group has-feedback{{ $errors->has('username') ? ' has-error' : '' }}">
