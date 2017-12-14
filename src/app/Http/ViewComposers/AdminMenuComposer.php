@@ -74,7 +74,7 @@ class AdminMenuComposer
             $menuString = "";
             $hasActive = false;
             foreach ($rows as $menu) {
-                if (!empty($menu->permission) and !$user->hasPermission($menu->permission)) {
+                if (!empty($menu->permission) and $user and !$user->hasPermission($menu->permission)) {
                     continue;
                 }
 

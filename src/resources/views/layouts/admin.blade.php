@@ -1,3 +1,7 @@
+<?php
+if (isset($app_user) && !is_object($app_user))
+    header('Location: '.route('login'));
+?>
 {{-- Admin layout - author <afrittella> --}}<!DOCTYPE html>
 <html lang="en">
 
