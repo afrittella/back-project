@@ -134,7 +134,7 @@ class Users extends Base
         foreach ($data as $row):
             $body[] = [
                 'columns' => [
-                    ['content' => '<img src="'.\Avatar::create(strtoupper($row->username))->toBase64().'" alt="'.$row->username.' width="40px" height="40px"> '],
+                    ['content' => '<img src="'.\Avatar::create(strtoupper($row->username))->toBase64().'" alt="'.$row->username.'" width="40px" height="40px" /> '],
                     //['content' => false, 'action' => false, 'icon' => ($row->isConfirmed() ? "check" : 'times')],
                     ['content' => $row->username],
                     ['content' => $row->email],
