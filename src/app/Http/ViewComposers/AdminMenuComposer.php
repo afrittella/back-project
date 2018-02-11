@@ -43,7 +43,7 @@ class AdminMenuComposer
 
         $templates = [
             "menu" => '
-              <ul class="sidebar-menu">
+              <ul class="sidebar-menu" data-widget="tree">
                 %s
               </ul>
         ',

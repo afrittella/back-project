@@ -24,7 +24,7 @@
 
     @stack('before_styles')
 
-    <link href="{{ asset('vendor/adminlte/') }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/adminlte/') }}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="{{ asset('vendor/adminlte/') }}/dist/css/AdminLTE.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 
 <!-- main-menu -->
 @include('back-project::inc.sidebar')
-<!-- /main-menu
+<!-- /main-menu -->
 
     <!-- content -->
     <div class="content-wrapper">
@@ -74,11 +74,11 @@
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{ asset('vendor/adminlte') }}/plugins/jQuery/jQuery-2.2.3.min.js"><\/script>')</script>
 <!-- Bootstrap 3.3.5 -->
-<script src="{{ asset('vendor/adminlte') }}/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="{{ asset('vendor/adminlte') }}/plugins/pace/pace.min.js"></script>
-<script src="{{ asset('vendor/adminlte') }}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="{{ asset('vendor/adminlte') }}/plugins/fastclick/fastclick.js"></script>
-<script src="{{ asset('vendor/adminlte') }}/dist/js/app.min.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="{{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
 <script src="{{ asset('vendor/back-project') }}/js/jquery.form.min.js"></script>
 <script src="{{ asset('vendor/back-project') }}/js/admin.js"></script>
 

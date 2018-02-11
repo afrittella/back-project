@@ -28,12 +28,12 @@
 </table>
 
 @push('after_styles')
-    <link href="{{ asset('vendor/adminlte/') }}/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('vendor/adminlte/') }}/bower_components/datatables.net/css/dataTables.bootstrap.css" rel="stylesheet">
 @endpush
 
 @push('bottom_scripts')
-    <script src="{{ asset('vendor/adminlte/') }}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('vendor/adminlte/') }}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="{{ asset('vendor/adminlte/') }}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('vendor/adminlte/') }}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
         $( document ).ready(function () {
             var table = $('.table').DataTable({
@@ -75,4 +75,3 @@
         });
     </script>
 @endpush
-
